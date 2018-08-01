@@ -14,16 +14,16 @@ import { ShoppingCartComponent } from "../shopping-cart/shopping-cart.component"
 import { StoreFrontComponent } from "./store-front.component";
 
 const PRODUCT_1 = new Product();
-PRODUCT_1.name = "Product 1";
+PRODUCT_1.nome = "Product 1";
 PRODUCT_1.id = "1";
-PRODUCT_1.price = 1;
-PRODUCT_1.description = "desc1";
+PRODUCT_1.precoUnitario = 1;
+PRODUCT_1.codigoDoProduto = "desc1";
 
 const PRODUCT_2 = new Product();
-PRODUCT_2.name = "Product 2";
+PRODUCT_2.nome = "Product 2";
 PRODUCT_2.id = "2";
-PRODUCT_2.price = 2;
-PRODUCT_2.description = "desc2";
+PRODUCT_2.precoUnitario = 2;
+PRODUCT_2.codigoDoProduto = "desc2";
 
 // tslint:disable-next-line:max-classes-per-file
 class MockProductDataService extends ProductsDataService {
@@ -101,13 +101,13 @@ describe("StoreFrontComponent", () => {
     const productElements = compiled.querySelectorAll(".product-container");
     expect(productElements.length).toEqual(2);
 
-    expect(productElements[0].querySelector(".js-product-name").textContent).toEqual(PRODUCT_1.name);
-    expect(productElements[0].querySelector(".js-product-price").textContent).toContain(PRODUCT_1.price);
-    expect(productElements[0].querySelector(".js-product-desc").textContent).toContain(PRODUCT_1.description);
+    expect(productElements[0].querySelector(".js-product-name").textContent).toEqual(PRODUCT_1.nome);
+    expect(productElements[0].querySelector(".js-product-price").textContent).toContain(PRODUCT_1.precoUnitario);
+    expect(productElements[0].querySelector(".js-product-desc").textContent).toContain(PRODUCT_1.codigoDoProduto);
 
-    expect(productElements[1].querySelector(".js-product-name").textContent).toEqual(PRODUCT_2.name);
-    expect(productElements[1].querySelector(".js-product-price").textContent).toContain(PRODUCT_2.price);
-    expect(productElements[1].querySelector(".js-product-desc").textContent).toContain(PRODUCT_2.description);
+    expect(productElements[1].querySelector(".js-product-name").textContent).toEqual(PRODUCT_2.nome);
+    expect(productElements[1].querySelector(".js-product-price").textContent).toContain(PRODUCT_2.precoUnitario);
+    expect(productElements[1].querySelector(".js-product-desc").textContent).toContain(PRODUCT_2.codigoDoProduto);
   }));
 
   it("should not display the remove item button when the item is not in the cart", async(() => {
@@ -119,9 +119,9 @@ describe("StoreFrontComponent", () => {
     const productElements = compiled.querySelectorAll(".product-container");
     expect(productElements.length).toEqual(2);
 
-    expect(productElements[0].querySelector(".js-product-name").textContent).toEqual(PRODUCT_1.name);
-    expect(productElements[0].querySelector(".js-product-price").textContent).toContain(PRODUCT_1.price);
-    expect(productElements[0].querySelector(".js-product-desc").textContent).toContain(PRODUCT_1.description);
+    expect(productElements[0].querySelector(".js-product-name").textContent).toEqual(PRODUCT_1.nome);
+    expect(productElements[0].querySelector(".js-product-price").textContent).toContain(PRODUCT_1.precoUnitario);
+    expect(productElements[0].querySelector(".js-product-desc").textContent).toContain(PRODUCT_1.codigoDoProduto);
     expect(productElements[0].querySelectorAll(".js-btn-remove").length).toEqual(0);
   }));
 
