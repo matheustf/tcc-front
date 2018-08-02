@@ -14,7 +14,7 @@
   <div class="medium-4 columns text-right">
     <h5 class="text--red"
        *ngIf="(cart | async).deliveryOptionId === undefined">Por favor selecione a entrega...</h5>
-    <a class="success button large"
+    <a class="success button large" (click)=enviarPedido()
        *ngIf="(cart | async).deliveryOptionId !== undefined"
        routerLink="/confirmed">Finalizar Compra</a>
   </div>
@@ -58,7 +58,7 @@
           <label class="text--bold js-option-name" for="{{option.nome}}" (click)="setDeliveryOption(option)">{{option.nome}}</label>
         </div>
         <div class="small-2 columns">
-          <p class="text--bold text--red js-option-price">{{option.precoUnitario | currency:'BRL':true}}</p>
+          <p class="text--bold text--red js-option-price">{{0 | currency:'BRL':true}}</p>
         </div>
         <div class="small-12 columns">
           <p>{{option.codigoDoProduto}}</p>

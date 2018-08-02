@@ -1,3 +1,6 @@
+import { PedidoDataService } from './../../services/pedido.service';
+import { Pedido } from './../../models/pedido.model';
+import { Compra } from 'app/models/compra.model';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/core";
 import { CartItem } from "app/models/cart-item.model";
 import { DeliveryOption } from "app/models/delivery-option.model";
@@ -28,9 +31,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   private products: Product[];
   private cartSubscription: Subscription;
 
+  mensagem: string = '';
+
+
   public constructor(private productsService: ProductsDataService,
                      private deliveryOptionService: DeliveryOptionsDataService,
-                     private shoppingCartService: ShoppingCartService) {
+                     private shoppingCartService: ShoppingCartService,
+                     private pedidoService: PedidoDataService) {
   }
 
   public emptyCart(): void {
@@ -64,5 +71,36 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     if (this.cartSubscription) {
       this.cartSubscription.unsubscribe();
     }
+  }
+
+  public enviarPedido(){
+    console.log("OK");
+    console.log(this.cartItems);
+    console.log(this.cartItems[0].quantity);
+
+  var pedido = new Pedido();
+  console.log("CONSTRUIU");
+   this.cartItems
+    .map((item) => {
+      
+      var compra = new Compra();
+      compra.codigoDoProduto = item.product.codigoDoProduto;
+      compra.quantidade = item.quantity;
+      pedido.compras.push(compra);
+    });
+
+    pedido.nomeDoComprador = "matheus";
+    pedido.formaDePagamento = "BOLETO";
+
+    console.log("CONSTRUIU");
+    console.log(pedido);
+
+
+    this.pedidoService
+    .criarPedido(pedido)
+    .subscribe(res => {
+      this.mensagem = res.mensagem;
+    }, erro => console.log(erro));
+
   }
 }

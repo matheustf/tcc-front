@@ -1,3 +1,4 @@
+import { PedidoDataService } from './services/pedido.service';
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
@@ -32,6 +33,7 @@ import { LocalStorageServie, StorageService } from "./services/storage.service";
   ],
   providers: [
     ProductsDataService,
+    PedidoDataService,
     DeliveryOptionsDataService,
     PopulatedCartRouteGuard,
     LocalStorageServie,

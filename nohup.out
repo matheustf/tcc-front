@@ -1,0 +1,138 @@
+ORM initialization successful
+App events bus { name: 'booted', namespace: 'shared' }
+App events bus { name: 'booted', namespace: 'requester' }
+org.eclipse.m2e.logback.configuration: The org.eclipse.m2e.logback.configuration bundle was activated before the state location was initialized.  Will retry after the state location is initialized.
+org.eclipse.m2e.logback.configuration: Logback config file: /home/matheus/wokspaceSTS/.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.9.0.20180606-2036.xml
+org.eclipse.m2e.logback.configuration: Initializing logback
+Memory pressure relief: Total: res = 10825728/10932224/106496, res+swap = 7323648/7368704/45056
+Transformer WrapMethodCallScript failed on org/eclipse/jdt/core/dom/ASTConverter. Trace:
+java.lang.UnsupportedOperationException: This feature requires ASM5
+	at org.objectweb.asm.MethodVisitor.visitInvokeDynamicInsn(MethodVisitor.java:459)
+	at org.objectweb.asm.ClassReader.readCode(ClassReader.java:2237)
+	at org.objectweb.asm.ClassReader.readMethod(ClassReader.java:1274)
+	at org.objectweb.asm.ClassReader.accept(ClassReader.java:679)
+	at org.objectweb.asm.ClassReader.accept(ClassReader.java:391)
+	at lombok.patcher.PatchScript.runASM(PatchScript.java:111)
+	at lombok.patcher.scripts.MethodLevelPatchScript.patch(MethodLevelPatchScript.java:53)
+	at lombok.patcher.ScriptManager$OurClassFileTransformer.transform(ScriptManager.java:106)
+	at sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:428)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.defineClass(ModuleClassLoader.java:276)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.defineClass(ClasspathManager.java:632)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findClassImpl(ClasspathManager.java:555)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClassImpl(ClasspathManager.java:514)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:501)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:328)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:392)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:470)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:419)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:411)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:150)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:411)
+	at lombok.launch.ShadowClassLoader.loadClass(ShadowClassLoader.java:530)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at lombok.eclipse.agent.PatchValEclipse$Reflection.<clinit>(PatchValEclipse.java:326)
+	at lombok.eclipse.agent.PatchValEclipse.copyInitializationOfLocalDeclaration(PatchValEclipse.java:85)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at lombok.eclipse.agent.PatchValEclipsePortal.copyInitializationOfLocalDeclaration(PatchValEclipsePortal.java:58)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:115)
+	at lombok.launch.PatchFixesHider$ValPortal.copyInitializationOfLocalDeclaration(PatchFixesHider.java:224)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeExitVariableWithInitialization(Parser.java:3973)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6798)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11672)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:12025)
+	at org.eclipse.jdt.internal.core.search.matching.MatchLocatorParser.parseBodies(MatchLocatorParser.java:984)
+	at org.eclipse.jdt.internal.core.search.matching.MatchLocatorParser.parseBodies(MatchLocatorParser.java:958)
+	at org.eclipse.jdt.internal.core.search.matching.MatchLocator.getMethodBodies(MatchLocator.java:920)
+	at org.eclipse.jdt.internal.core.search.matching.MatchLocator.parseAndBuildBindings(MatchLocator.java:1923)
+	at org.eclipse.jdt.internal.core.search.matching.MatchLocator.locateMatches(MatchLocator.java:1267)
+	at org.eclipse.jdt.internal.core.search.matching.MatchLocator.locateMatches(MatchLocator.java:1372)
+	at org.eclipse.jdt.internal.core.search.matching.MatchLocator.locateMatches(MatchLocator.java:1514)
+	at org.eclipse.jdt.internal.core.search.JavaSearchParticipant.locateMatches(JavaSearchParticipant.java:109)
+	at org.eclipse.jdt.internal.core.search.BasicSearchEngine.findMatches(BasicSearchEngine.java:247)
+	at org.eclipse.jdt.internal.core.search.BasicSearchEngine.search(BasicSearchEngine.java:592)
+	at org.eclipse.jdt.core.search.SearchEngine.search(SearchEngine.java:667)
+	at org.springframework.ide.eclipse.core.java.JdtUtils.searchForJavaConfigs(JdtUtils.java:1034)
+	at org.springframework.ide.eclipse.beans.core.model.locate.AutoConfigurationJavaConfigLocator.locateJavaConfigs(AutoConfigurationJavaConfigLocator.java:55)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansProject$2.run(BeansProject.java:1197)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansProject.populateAutoDetectedConfigsAndConfigSetsInternally(BeansProject.java:1165)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansProject$1.run(BeansProject.java:1115)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+22:49:13.678 [Background Thread-1 (Spring IDE/3.9.5)] DEBUG org.springframework.data.repository.config.RepositoryConfigurationDelegate - Spring Data MongoDB - Registering repository: userRepository - Interface: com.github.vlsidlyarevich.repository.UserRepository - Factory: org.springframework.data.mongodb.repository.support.MongoRepositoryFactoryBean
+22:50:25.659 [Background Thread-2 (Spring IDE/3.9.5)] DEBUG org.springframework.data.repository.config.RepositoryConfigurationDelegate - Spring Data JPA - Registering repository: pessoaRepository - Interface: com.tower.condominio.repository.PessoaRepository - Factory: org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean
+22:50:25.674 [Background Thread-2 (Spring IDE/3.9.5)] DEBUG org.springframework.data.repository.config.RepositoryConfigurationDelegate - Spring Data JPA - Registering repository: patoRepository - Interface: com.tower.condominio.repository.PatoRepository - Factory: org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean
+22:50:25.679 [Background Thread-2 (Spring IDE/3.9.5)] DEBUG org.springframework.data.repository.config.RepositoryConfigurationDelegate - Spring Data JPA - Registering repository: moradorRepository - Interface: com.tower.condominio.repository.MoradorRepository - Factory: org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean
+22:50:25.685 [Background Thread-2 (Spring IDE/3.9.5)] DEBUG org.springframework.data.repository.config.RepositoryConfigurationDelegate - Spring Data JPA - Registering repository: apartamentoRepository - Interface: com.tower.condominio.repository.ApartamentoRepository - Factory: org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean
+22:50:25.691 [Background Thread-2 (Spring IDE/3.9.5)] DEBUG org.springframework.data.repository.config.RepositoryConfigurationDelegate - Spring Data JPA - Registering repository: contatoRepository - Interface: com.tower.condominio.repository.ContatoRepository - Factory: org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean
+22:50:25.696 [Background Thread-2 (Spring IDE/3.9.5)] DEBUG org.springframework.data.repository.config.RepositoryConfigurationDelegate - Spring Data JPA - Registering repository: enderecoRepository - Interface: com.tower.condominio.repository.EnderecoRepository - Factory: org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean
+22:50:25.701 [Background Thread-2 (Spring IDE/3.9.5)] DEBUG org.springframework.data.repository.config.RepositoryConfigurationDelegate - Spring Data JPA - Registering repository: blocoRepository - Interface: com.tower.condominio.repository.BlocoRepository - Factory: org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean
+22:50:25.707 [Background Thread-2 (Spring IDE/3.9.5)] DEBUG org.springframework.data.repository.config.RepositoryConfigurationDelegate - Spring Data JPA - Registering repository: condominioRepository - Interface: com.tower.condominio.repository.CondominioRepository - Factory: org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean
+22:50:28.897 [Background Thread-2 (Spring IDE/3.9.5)] DEBUG org.springframework.data.repository.config.RepositoryConfigurationDelegate - Spring Data MongoDB - Registering repository: userRepository - Interface: com.github.vlsidlyarevich.repository.UserRepository - Factory: org.springframework.data.mongodb.repository.support.MongoRepositoryFactoryBean
+Memory pressure relief: Total: res = 13025280/12693504/-331776, res+swap = 9342976/8998912/-344064
+Memory pressure relief: Total: res = 12648448/12697600/49152, res+swap = 8974336/9125888/151552
+Memory pressure relief: Total: res = 12107776/11890688/-217088, res+swap = 8404992/8384512/-20480
+Memory pressure relief: Total: res = 11821056/11808768/-12288, res+swap = 8118272/8105984/-12288
+Memory pressure relief: Total: res = 11808768/11812864/4096, res+swap = 8110080/8110080/0
+Memory pressure relief: Total: res = 11812864/11816960/4096, res+swap = 8114176/8114176/0
+Memory pressure relief: Total: res = 11816960/11816960/0, res+swap = 8114176/8114176/0
+Memory pressure relief: Total: res = 11816960/11821056/4096, res+swap = 8118272/8118272/0
+Memory pressure relief: Total: res = 11821056/11821056/0, res+swap = 8118272/8118272/0
+Memory pressure relief: Total: res = 11821056/11821056/0, res+swap = 8118272/8118272/0
+Memory pressure relief: Total: res = 11808768/11812864/4096, res+swap = 8105984/8110080/4096
+Memory pressure relief: Total: res = 11812864/11816960/4096, res+swap = 8114176/8310784/196608
+Memory pressure relief: Total: res = 11816960/11816960/0, res+swap = 8114176/8114176/0
+Memory pressure relief: Total: res = 11816960/11821056/4096, res+swap = 8118272/8118272/0
+Memory pressure relief: Total: res = 11821056/11821056/0, res+swap = 8118272/8118272/0
+Memory pressure relief: Total: res = 11821056/11821056/0, res+swap = 8118272/8118272/0
+Memory pressure relief: Total: res = 11821056/11825152/4096, res+swap = 8122368/8122368/0
+Memory pressure relief: Total: res = 11825152/11825152/0, res+swap = 8122368/8122368/0
+Memory pressure relief: Total: res = 11825152/11825152/0, res+swap = 8122368/8122368/0
+Memory pressure relief: Total: res = 11825152/11829248/4096, res+swap = 8126464/8126464/0
+Memory pressure relief: Total: res = 11829248/11829248/0, res+swap = 8126464/8126464/0
+Memory pressure relief: Total: res = 11829248/11829248/0, res+swap = 8126464/8126464/0
+Memory pressure relief: Total: res = 11829248/11833344/4096, res+swap = 8130560/8130560/0
+Memory pressure relief: Total: res = 11833344/11833344/0, res+swap = 8130560/8130560/0
+Memory pressure relief: Total: res = 11833344/11833344/0, res+swap = 8130560/8130560/0
+Memory pressure relief: Total: res = 11833344/11837440/4096, res+swap = 8134656/8134656/0
+Memory pressure relief: Total: res = 11837440/11841536/4096, res+swap = 8134656/8138752/4096
+Memory pressure relief: Total: res = 11841536/11849728/8192, res+swap = 8146944/8146944/0
+Memory pressure relief: Total: res = 11849728/11849728/0, res+swap = 8146944/8146944/0
+Memory pressure relief: Total: res = 11849728/11849728/0, res+swap = 8146944/8146944/0
+Memory pressure relief: Total: res = 11849728/11853824/4096, res+swap = 8151040/8151040/0
+Memory pressure relief: Total: res = 11853824/11853824/0, res+swap = 8151040/8151040/0
+Memory pressure relief: Total: res = 11853824/11853824/0, res+swap = 8151040/8151040/0
+Memory pressure relief: Total: res = 11853824/11857920/4096, res+swap = 8155136/8155136/0
+Memory pressure relief: Total: res = 11857920/11857920/0, res+swap = 8155136/8155136/0
+Memory pressure relief: Total: res = 11857920/11857920/0, res+swap = 8155136/8155136/0
+Memory pressure relief: Total: res = 11857920/11862016/4096, res+swap = 8159232/8159232/0
+Memory pressure relief: Total: res = 11862016/11862016/0, res+swap = 8159232/8159232/0
+Memory pressure relief: Total: res = 11862016/11862016/0, res+swap = 8159232/8159232/0
+Memory pressure relief: Total: res = 11862016/11866112/4096, res+swap = 8163328/8163328/0
+Memory pressure relief: Total: res = 11866112/11866112/0, res+swap = 8163328/8163328/0
+Memory pressure relief: Total: res = 11866112/11866112/0, res+swap = 8163328/8163328/0
+Memory pressure relief: Total: res = 11866112/11874304/8192, res+swap = 8167424/8171520/4096
+Memory pressure relief: Total: res = 11874304/11878400/4096, res+swap = 8175616/8175616/0
+Memory pressure relief: Total: res = 11878400/11878400/0, res+swap = 8175616/8175616/0
+Memory pressure relief: Total: res = 11878400/11882496/4096, res+swap = 8179712/8179712/0
+Memory pressure relief: Total: res = 11882496/11882496/0, res+swap = 8179712/8179712/0
+Memory pressure relief: Total: res = 11882496/11882496/0, res+swap = 8179712/8179712/0
+Memory pressure relief: Total: res = 11882496/11886592/4096, res+swap = 8183808/8183808/0
+Memory pressure relief: Total: res = 11886592/11886592/0, res+swap = 8183808/8183808/0
+Memory pressure relief: Total: res = 11886592/11886592/0, res+swap = 8183808/8183808/0
+Memory pressure relief: Total: res = 11886592/11890688/4096, res+swap = 8187904/8187904/0
+Memory pressure relief: Total: res = 913408/917504/4096, res+swap = 1265664/1265664/0
+Memory pressure relief: Total: res = 917504/929792/12288, res+swap = 1286144/1282048/-4096
+Memory pressure relief: Total: res = 929792/937984/8192, res+swap = 1294336/1286144/-8192
+Memory pressure relief: Total: res = 937984/937984/0, res+swap = 1286144/1286144/0
