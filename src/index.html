@@ -14,8 +14,14 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
+
+
 <body>
   <div class="top-bar">
+    <button type="button" class="button-registrar js-btn-add top-bar-right" (click)="addProductToCart(product, 1)">Registrar</button>
+
+    <button type="button" class="button-login js-btn-add top-bar-right" (click)="addProductToCart(product, 1)">Login</button>
+   
     <div class="top-bar-left">
       <ul class="dropdown menu" data-dropdown-menu>
         <li class="menu-text">
@@ -29,8 +35,10 @@
   </div>
   <div class="row">
     <div class="small-12 columns">
-      <app-root>loading....<app-root>
+      <app-root>loading....
+        <app-root>
     </div>
   </div>
 </body>
+
 </html>
