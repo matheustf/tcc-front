@@ -1,3 +1,9 @@
+import { RequestInterceptor } from './core/auth/request.interceptor';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './core/auth/auth.guard';
+import { HomeModule } from './home/home.module';
+import { ErrorsModule } from './errors/errors.module';
+import { CoreModule } from './core/core.module';
 import { PedidoDataService } from './services/pedido.service';
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
@@ -29,7 +35,11 @@ import { LocalStorageServie, StorageService } from "./services/storage.service";
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    ErrorsModule,
+    AppRoutingModule,
+    CoreModule,
+    HomeModule,
+    HttpClientModule
   ],
   providers: [
     ProductsDataService,

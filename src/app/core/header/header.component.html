@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+
+    <div class="top-bar">
+
+        <div class="top-bar-left">
+            <a class="navbar-brand" [routerLink]="['']">
+                <i class="material-icons">local_drink</i>
+                Sales Store
+            </a>
+        </div>
+        <div >
+        <div class="top-bar-right" *ngIf="(user$ | async) as user; else login top-bar-left">
+                <span class="navbar-text ">
+            <i class="fa fa-user-circle mr-1"></i>
+            <a class="mr-1">{{ user.name}}</a>
+            <a (click)="logout()">(Logout)</a>
+        </span>
+        </div>
+    </div>
+
+        <ng-template #login>
+            <div class="top-bar-right">
+                <span class="navbar-text ">
+                    <a [routerLink]="['/home']">Please, login!</a>
+                </span>
+            </div>
+        </ng-template>
+
+
+    </div>
+
+    <!-- <button type="button" class="button-registrar js-btn-add top-bar-right" (click)="addProductToCart(product, 1)">Registrar</button>
+
+        <button type="button" class="button-login js-btn-add top-bar-right"  (click)="addProductToCart(product, 1)">Login</button>
+       -->
+
+</nav>
