@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import { RequestInterceptor } from './auth/request.interceptor';
+import { HomeRoutingModule } from '../home/home.routing.module';
 
 @NgModule({
     declarations: [HeaderComponent],

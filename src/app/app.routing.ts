@@ -11,6 +11,7 @@ import { OrderConfirmationComponent } from "./components/order-confirmation/orde
 import { StoreFrontComponent } from "./components/store-front/store-front.component";
 import { PopulatedCartRouteGuard } from "./route-gaurds/populated-cart.route-gaurd";
 import { HomeModule } from "./home/home.module";
+import { MeusPedidosComponent } from './home/meuspedidos/meuspedidos.component';
 
 @NgModule({
     exports: [RouterModule],
@@ -34,7 +35,12 @@ import { HomeModule } from "./home/home.module";
                         canActivate: [AuthGuard],
                         path: 'signup',
                         component: SignUpComponent,
-                    },            
+                    },     
+                    { 
+                        canActivate: [AuthGuard],
+                        path: 'meuspedidos',
+                        component: MeusPedidosComponent,
+                    },         
             {
                 canActivate: [PopulatedCartRouteGuard],
                 component: CheckoutComponent,

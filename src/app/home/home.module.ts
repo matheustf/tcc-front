@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { VMessageModule } from '../components/vmessage/vmessage.module';
 import { RouterModule } from '@angular/router';
 import { SignUpComponent } from './singup/singup.component';
+import { MeusPedidosComponent } from './meuspedidos/meuspedidos.component';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing.module';
 import { SignUpService } from './singup/signup.service';
@@ -17,6 +18,7 @@ import { SignUpService } from './singup/signup.service';
     declarations: [ 
         SignInComponent,
         SignUpComponent,
+        MeusPedidosComponent,
         HomeComponent
     ],
     imports: [ 

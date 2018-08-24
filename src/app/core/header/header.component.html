@@ -8,23 +8,21 @@
                 Sales Store
             </a>
         </div>
-        <div >
-        <div class="top-bar-right" *ngIf="(user$ | async) as user; else login top-bar-left">
+        <div>
+            <div class="top-bar-right" *ngIf="(user$ | async) as user; else login top-bar-left">
                 <span class="navbar-text ">
-            <i class="fa fa-user-circle mr-1"></i>
-            <a class="mr-1">{{ user.nome}}</a>
-            <a (click)="logout()">(Logout)</a>
-        </span>
-        </div>
+                    <i class="fa fa-user-circle mr-1"></i>
+                    <a class="mr-1">{{ user.name }}</a>
+                    <a (click)="logout()">(Logout)</a>
+                </span>
+            </div>
 
-        <div class="top-bar-right" *ngIf="(user$ | async) as user;">
-            <span class="navbar-text ">
-        <i class="fa fa-user-circle mr-1"></i>
-        <a class="mr-1">{{ user.name}}</a>
-        <a>Meus Pedidos</a>
-    </span>
-    </div>
-    </div>
+            <div class="top-bar-right">
+                <span class="navbar-text ">
+                    <a [routerLink]="['/meuspedidos']">Meus Pedidos</a>
+                </span>
+            </div>
+        </div>
 
         <ng-template #login>
             <div class="top-bar-right">
