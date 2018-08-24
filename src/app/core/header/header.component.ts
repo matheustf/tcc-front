@@ -20,6 +20,8 @@ export class HeaderComponent {
     }
 
     logout() {
+        console.log("USERRRRR");
+        console.log(this.user$);
         this.userService.logout();
         this.router.navigate(['']);
     }
