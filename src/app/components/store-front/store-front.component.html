@@ -10,8 +10,8 @@
             </div>
             <div class="medium-9 columns">
               <h4>
-                <span class="text--bold js-product-name">{{product.nome}}</span>
-                <small class="product_price js-product-price">{{product.precoUnitario | currency:'BRL':true}}</small>
+                <span class="text--bold js-product-name">{{product.nome}}</span><h4>
+                <small class="product_price js-product-price text--blue text--bold ">{{product.precoUnitario | currency:'BRL':true}}</small></h4>
               </h4>
               <p class="js-product-desc">{{product.codigoDoProduto}}</p>
               <p>
@@ -25,7 +25,7 @@
                 <button type="button"
                         class="button small js-btn-remove"
                         *ngIf="productInCart(product) | async"
-                        (click)="removeProductFromCart(product, 1)">Remover item do carrinho</button>
+                        (click)="removeProductFromCart(product, 1)"><b>Remover item do carrinho</b></button>
               </p>
             </div>
           </div>

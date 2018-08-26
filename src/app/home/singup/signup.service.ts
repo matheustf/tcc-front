@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Usuario } from './../../models/usuario.model';
 import { Autheticacao } from './../../models/autenticacao.model';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
@@ -10,8 +11,8 @@ import { Observable } from "rxjs/Observable";
 @Injectable()
 export class SignUpService {
 
-    urlUsuario: string = "http://localhost:8085/api/usuario/cliente";
-    urlCliente: string = "http://localhost:8085/api/cliente";
+    urlUsuario: string = environment.apiOAuthUrl + '/api/usuario/cliente';
+    urlCliente: string = environment.apiOAuthUrl + '/api/cliente';
 
     constructor(
         private http: Http) {

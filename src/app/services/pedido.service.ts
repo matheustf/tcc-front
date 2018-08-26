@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Pedido } from './../models/pedido.model';
 import { Injectable } from "@angular/core";
 import { Http, Headers, Response } from "@angular/http";
@@ -13,7 +14,7 @@ export class PedidoDataService extends CachcingServiceBase {
   http: Http;
   headers: Headers;
 
-  url: string = "http://localhost:8080/pedidos";
+  url: string = environment.apiVendasUrl + 'pedidos/';
 
   public constructor(http: Http) {
     super();
@@ -24,12 +25,25 @@ export class PedidoDataService extends CachcingServiceBase {
 
   }
 
+  buscarPedidosCliente(idCliente: string): Observable<any> {
+    console.log("ENVIANDO");
+      return this.http
+            .get(this.url + 'cliente' +  '/' + idCliente)
+            .map(res => res.json());
+  }
 
-  criarPedido(pedido: Pedido): Observable<MensagemCadastro> {
+  criarPedido(pedido: Pedido): Observable<Pedido> {
     console.log("ENVIANDO");
     return this.http
       .post(this.url, JSON.stringify(pedido), { headers: this.headers })
-      .map(() => new MensagemCadastro('Dados básicos alterados com sucesso', false));
+      .map(res => res.json());
+  }
+
+  efetuarPedido(idPedido: string): Observable<MensagemCadastro> {
+    console.log("ENVIANDO");
+    return this.http
+      .post(this.url + idPedido + "/efetuarPedido", { headers: this.headers })
+      .map(() => new MensagemCadastro('sucesso', false));
   }
 
 }

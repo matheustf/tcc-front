@@ -1,3 +1,6 @@
+import { AvaliacaoService } from './../services/avaliacao.service';
+import { ProdutoService } from './../services/produto.service';
+import { EntregaService } from './../services/entrega.service';
 import { RequestInterceptor } from './../core/auth/request.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ClienteService } from './singup/cliente.service';
@@ -30,7 +33,12 @@ import { SignUpService } from './singup/signup.service';
         HomeRoutingModule
     ],
     providers: [
-        SignUpService, AuthService, ClienteService,
+        SignUpService, 
+        AuthService, 
+        ClienteService, 
+        EntregaService, 
+        ProdutoService,
+        AvaliacaoService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,

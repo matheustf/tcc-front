@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Autheticacao } from './../../models/autenticacao.model';
 import { Http, Headers, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -11,7 +12,7 @@ export class AuthService {
 
   headers: Headers;
 
-  url: string = "http://localhost:8085/api/auth";
+  url: string = environment.apiOAuthUrl + '/api/auth';
 
   constructor(
     private http: Http) {

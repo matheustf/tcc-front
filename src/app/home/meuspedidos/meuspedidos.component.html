@@ -1,231 +1,208 @@
 <div class="container">
     <div class="col-md-12">
-
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h3 class="text-center">Pedidos</h3>
             </div>
         </div>
-        <div class="panel-footer">
 
-            <!-- ********************** PAINEL PEDIDO ********************** -->
-            <div class="panel-heading">
-                <h3 class="panel-title">Pedido: KQIE34</h3>
-            </div>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Tenis nike</h3>
-                </div>
-
-                <!-- RESPONSIVO -->
-                <div class="table-responsive">
-
-                    <!-- TABELA -->
-                    <table class="table table-hover table table-bordered">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Codigo de Entrega</th>
-                                <th scope="col">Produto</th>
-                                <th scope="col">Quantidade</th>
-                                <th scope="col">Valor</th>
-                                <th scope="col">Data da Compra</th>
-                                <th scope="col">Data de Entrega</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>ASO43</td>
-                                <td>Nike X</td>
-                                <td>2</td>
-                                <td>700</td>
-                                <td>08/08/2018</td>
-                                <td>10/10/2018</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <br>
-
-                    <!-- PIPELINE DE ENTREGA -->
-                    <div class="stepwizard">
-                        <div class="stepwizard-row">
-                            <div class="stepwizard-step">
-                                <button type="button" class="btn btn-default btn-circle">1</button>
-                                <p>Em Separacao</p>
-                            </div>
-                            <div class="stepwizard-step">
-                                <button type="button" class="btn btn-primary btn-circle">2</button>
-                                <p>Enviado</p>
-                            </div>
-                            <div class="stepwizard-step">
-                                <button type="button" class="btn btn-default btn-circle">3</button>
-                                <p>Em Transponte</p>
-                            </div>
-                            <div class="stepwizard-step">
-                                <button type="button" class="btn btn-default btn-circle">4</button>
-                                <p>Entregue</p>
-                            </div>
-                        </div>
+            <div *ngFor="let pedido of pedidos;let index = index;">
+                <!-- ********************** ACCORDION********************** -->
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{pedido.codigoDoPedido}}" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="more-less glyphicon glyphicon-plus"></i>
+                                <h3 class="panel-title">Pedido: {{pedido.codigoDoPedido}}</h3>
+                            </a>
+                        </h4>
                     </div>
-                </div>
+                    <div id="{{pedido.codigoDoPedido}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
 
-                <!-- INFORMACOES ADICIONAIS -->
+                            <div *ngFor="let compra of pedido.compras;let index = index;">
 
-                <!-- ERROS 
-        <div class="panel-body">
-            Status da entrega: PROBLEMAS NA ENTREGA
-        </div>
-
-        <div class="panel-body">
-            Status da entrega: CANCELADO
-        </div>
-        -->
-
-                <hr/>
-
-
-                <div class="panel-body">
-                    <div style="text-align:center">
-                        <p>Status da entrega: EM SEPARACAO</p>
-                        <p>Data: 10/05/2018</p>
-                    </div>
-                    <hr/>
-
-                    <h5>Avaliação/Satisfação: </h5>
-                      <div class="panel-body">
-
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12">
-
-
-                                <div class="col-xs-6">
-                                    <p>Texto:</p>
-
-                                    <textarea style="background-color:white;color:rgb(4, 106, 165);" [(ngModel)]='rapidPageValue' rows="1" cols="1">                             
-                        </textarea>
-                                </div>
-
-                                <p>Nota:</p>
-
-
-                                    <select name="wgtmsr" id="wgtmsr" style="width: 50px !important; min-width: 50px; max-width: 50px; min-height: 30px; max-height: 30px; height: 50px !important;" (ngModelChange)="setNewUser($event)"
-                                        (ngModel)="lUsers">
-                                        <option id="wgtmsr" *ngFor="let user of lUsers" [ngValue]="user">
-                                            {{user}}
-                                        </option>
-                                    </select>
-
-                                <br>
-
-
-                            </div>
-
-                        </div>
-                        <br>
-                        <div class="row">
-                                <div class="col-xs-12 col-xs-offset-2 col-lg-offset-2">
-                                    <div>
-                                        <button type="button" class="btn btn-success">Avaliar Produto</button>
+                                <!--ITEM**************************************************************************************************************************************************-->
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">{{compra.produto.nome}}</h3>
                                     </div>
-        
+
+
+                                    <!-- RESPONSIVO -->
+                                    <div class="table-responsive">
+
+                                        <!-- TABELA -->
+                                        <table class="table table-hover table table-bordered">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">Codigo de Entrega</th>
+                                                    <th scope="col">Produto</th>
+                                                    <th scope="col">Quantidade</th>
+                                                    <th scope="col">Valor</th>
+                                                    <th scope="col">Data da Compra</th>
+                                                    <th scope="col">Data de Entrega</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>{{compra.entrega.codigoDaEntrega}}</td>
+                                                    <td>{{compra.produto.nome}}</td>
+                                                    <td>{{compra.quantidade}}</td>
+                                                    <td>{{compra.valorDaCompra | currency:'BRL':true}}</td>
+                                                    <td>{{pedido.dataDoPedido}}</td>
+                                                    <td>{{compra.entrega.estimativaDeEntrega}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <br>
+
+                                        <!-- PIPELINE DE ENTREGA -->
+                                        <div class="stepwizard">
+                                            <div class="stepwizard-row">
+
+                                                <div *ngIf="compra.entrega.statusDaEntrega == 'EM_SEPARACAO'" class="stepwizard-step">
+                                                    <button type="button" class="btn btn-primary btn-circle">1</button>
+                                                    <p>Em Separacao</p>
+                                                </div>
+                                                <div *ngIf="compra.entrega.statusDaEntrega != 'EM_SEPARACAO'" class="stepwizard-step">
+                                                    <button type="button" class="btn btn-default btn-circle">1</button>
+                                                    <p>Em Separacao</p>
+                                                </div>
+
+
+                                                <div *ngIf="compra.entrega.statusDaEntrega == 'ENVIADO'" class="stepwizard-step">
+                                                    <button type="button" class="btn btn-primary btn-circle">1</button>
+                                                    <p>Enviado</p>
+                                                </div>
+                                                <div *ngIf="compra.entrega.statusDaEntrega != 'ENVIADO'" class="stepwizard-step">
+                                                    <button type="button" class="btn btn-default btn-circle">1</button>
+                                                    <p>Enviado</p>
+                                                </div>
+
+                                                <div *ngIf="compra.entrega.statusDaEntrega == 'EM_TRANSPORTE'" class="stepwizard-step">
+                                                    <button type="button" class="btn btn-primary btn-circle">1</button>
+                                                    <p>Em Transponte</p>
+                                                </div>
+                                                <div *ngIf="compra.entrega.statusDaEntrega != 'EM_TRANSPORTE'" class="stepwizard-step">
+                                                    <button type="button" class="btn btn-default btn-circle">1</button>
+                                                    <p>Em Transponte</p>
+                                                </div>
+
+                                                <div *ngIf="compra.entrega.statusDaEntrega == 'ENTREGUE'" class="stepwizard-step">
+                                                    <button type="button" class="btn btn-primary btn-circle">1</button>
+                                                    <p>Entregue</p>
+                                                </div>
+                                                <div *ngIf="compra.entrega.statusDaEntrega != 'ENTREGUE'" class="stepwizard-step">
+                                                    <button type="button" class="btn btn-default btn-circle">1</button>
+                                                    <p>Entregue</p>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- INFORMACOES ADICIONAIS -->
+
+                                    <!-- ERROS 
+                                <div class="panel-body">
+                                    Status da entrega: PROBLEMAS NA ENTREGA
+                                </div>
+                        
+                                <div class="panel-body">
+                                    Status da entrega: CANCELADO
+                                </div>
+                                -->
+
+                                    <hr/>
+
+
+                                    <div class="panel-body">
+                                        <div style="text-align:center">
+                                            <p>Status da entrega: {{compra.entrega.statusDaEntrega}}</p>
+                                            <p>Data: {{compra.entrega.historicoDeEntrega[0].data}}</p>
+
+                                            <div class="medium-4 columns text-right">
+                                                <a class="info button large" (click)="setOpen(compra)">Avaliar Produto</a>
+                                            </div>
+                                        </div>
+                                        <hr/>
+
+
+
+
+
+
+                                        <div *ngIf="compra.check == 1" class="container">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-lg-offset-2 ">
+
+                                                    <div class="input-group">
+                                                        <p>Titulo:</p>
+                                                        <input type="text" #titulo class="form-control">
+                                                
+                                                      </div>
+
+                                                    <p>Texto:</p>
+                                                    <!--Textarea with icon prefix-->
+                                                    <div class="md-form">
+                                                        <i class="fa fa-pencil prefix"></i>
+                                                        <textarea type="text"  #titleInput id="form8" class="md-textarea form-control" mdbInputDirective></textarea>
+                                                    </div>
+
+
+                                                    <p>Nota:</p>
+
+                                                    <select name="wgtmsr" id="wgtmsr" #titleInputBox style="width: 50px !important; min-width: 50px; max-width: 50px; min-height: 30px; max-height: 30px; height: 50px !important;"
+                                                         (ngModel)="lUsers">
+                                                        <option id="wgtmsr" *ngFor="let user of lUsers" [ngValue]="user">
+                                                            {{user}}
+                                                        </option>
+                                                    </select>
+
+                                                    <br>
+
+
+                                                </div>
+
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-xs-offset-2 col-lg-offset-7">
+                                                    <div>
+                                                        <button type="button" class="btn btn-success" (click)="avaliar(titulo.value, titleInput.value, titleInputBox.value, pedido, compra)">Enviar</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <br>
+
+                                    <!--FIM ITEM**************************************************************************************************************************************************-->
+
+
                                 </div>
                             </div>
-                    </div>
-
-            
 
 
 
 
 
-                </div>
-                <br>
-
-
-
-            </div>
-
-
-            <!-- ********************** PAINEL PRODUTO ********************** -->
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Tenis Adidas</h3>
-                </div>
-
-
-                <!-- RESPONSIVO -->
-                <div class="table-responsive">
-
-                    <!-- TABELA -->
-                    <table class="table table-hover table table-bordered">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Codigo de Entrega</th>
-                                <th scope="col">Produto</th>
-                                <th scope="col">Quantidade</th>
-                                <th scope="col">Valor</th>
-                                <th scope="col">Data da Compra</th>
-                                <th scope="col">Data de Entrega</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>S3K6N3</td>
-                                <td>Adidas Y</td>
-                                <td>1</td>
-                                <td>200</td>
-                                <td>08/08/2018</td>
-                                <td>15/11/2018</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <br>
-
-                    <!-- PIPELINE DE ENTREGA -->
-                    <div class="stepwizard">
-                        <div class="stepwizard-row">
-                            <div class="stepwizard-step">
-                                <button type="button" class="btn btn-default btn-circle">1</button>
-                                <p>Em Separacao</p>
-                            </div>
-                            <div class="stepwizard-step">
-                                <button type="button" class="btn btn-primary btn-circle">2</button>
-                                <p>Enviado</p>
-                            </div>
-                            <div class="stepwizard-step">
-                                <button type="button" class="btn btn-default btn-circle">3</button>
-                                <p>Em Transponte</p>
-                            </div>
-                            <div class="stepwizard-step">
-                                <button type="button" class="btn btn-default btn-circle">4</button>
-                                <p>Entregue</p>
-                            </div>
                         </div>
                     </div>
+
+                    <!-- ********************** FIM ACCORDION********************** -->
                 </div>
 
-                <!-- INFORMACOES ADICIONAIS -->
 
-                <!-- ERROS 
-            <div class="panel-body">
-                Status da entrega: PROBLEMAS NA ENTREGA
             </div>
-    
-            <div class="panel-body">
-                Status da entrega: CANCELADO
-            </div>
-            -->
-
-                <div class="panel-body">
-                    <p>Status da entrega: EM SEPARACAO</p>
-                    <p>Data: 10/05/2018</p>
-                    <div>
-                        <button type="button" class="btn btn-success">Avaliar Entrega</button>
-                    </div>
-                </div>
-            </div>
-
         </div>
+    </div>
+</div>
+<!-- panel-group -->

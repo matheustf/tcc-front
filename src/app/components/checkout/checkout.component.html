@@ -1,70 +1,102 @@
-  <div class="medium-4 columns">
-    <h2>
-      <i class="material-icons">shopping_basket</i>
-      <span>Pagamento</span>
-    </h2>
-  </div>
-  <div class="medium-4 columns text-right">
-    <h4>
-      Valor Total
-      <span class="text--red text--bold js-gross-total">{{(cart | async).grossTotal | currency:'BRL':true}}</span>
-    </h4>
-  </div>
-  <div class="medium-4 columns text-right">
-    <h5 class="text--red"
-       *ngIf="(cart | async).deliveryOptionId === undefined">Por favor selecione a entrega...</h5>
-    <a class="success button large" (click)=enviarPedido()
-       *ngIf="(cart | async).deliveryOptionId !== undefined"
-       routerLink="/confirmed">Finalizar Compra</a>
-  </div>
-  <hr/>
-  <div class="medium-8 columns">
-    <!--h4>Produto 1 de 1</h4-->
-    <!--small>Dispatching to the UK....</small-->
-    <div class="row checkout_row"
-        *ngFor="let item of cartItems">
-      <div class="medium-2 columns text-center">
-          <img src="{{item.product.urlImagem}}"
-                class="product_image"/>
-      </div>
-      <div class="medium-5 columns">
-          <span class="text--bold js-product-name">{{item.product.nome}}</span>
-          <p class="js-product-desc">{{item.product.codigoDoProduto}}</p>
-      </div>
-      <div class="medium-2 columns text-right">
-          <p class="text--red js-product-costs">{{item.quantity}} x {{item.product.precoUnitario | currency:'BRL':true}}</p>
-      </div>
-      <div class="medium-3 columns text-right">
-          <p class="text--bold text--red js-product-total">{{item.totalCost | currency:'BRL':true}}</p>
-      </div>
-    </div>
-  </div>
-  <div class="medium-4 columns">
-    <h4>Formas de Entrega</h4>
-
-    <div class="row delivery-option"
-        *ngFor="let option of deliveryOptions | async">
-        <div class="small-1 columns">
-          <input type="radio"
-                 name="delivery_option"
-                 id="{{option.nome}}"
-                 [checked]="option.id === (cart | async).deliveryOptionId"
-                 (click)="setDeliveryOption(option)">
-        </div>
-        <div class="small-9 columns">
-          <label class="text--bold js-option-name" for="{{option.nome}}" (click)="setDeliveryOption(option)">{{option.nome}}</label>
-        </div>
-        <div class="small-2 columns">
-          <p class="text--bold text--red js-option-price">{{0 | currency:'BRL':true}}</p>
-        </div>
-        <div class="small-12 columns">
-          <p>{{option.codigoDoProduto}}</p>
-        </div>
-    </div>
+<div class="medium-4 columns">
+  <h2>
+    <i class="material-icons">shopping_basket</i>
+    <span>Pagamento</span>
+  </h2>
+</div>
+<div class="medium-4 columns text-right">
+  <h4>
+    Valor Total
+    <span class="text--red text--bold js-gross-total">{{(cart | async).grossTotal | currency:'BRL':true}}</span>
+  </h4>
+</div>
 
 
-    <div class="small-10 columns small-centered">
-      <a class="warning button expanded"
-        routerLink="/">Adicionar mais produtos</a>
+
+<div class="medium-4 columns text-right">
+  <a class="info button large" routerLink="/">Adicionar mais produtos</a>
+</div>
+
+
+<hr/>
+<div class="medium-8 columns">
+  <!--h4>Produto 1 de 1</h4-->
+  <!--small>Dispatching to the UK....</small-->
+  <div class="row checkout_row" *ngFor="let item of cartItems">
+    <div class="medium-2 columns text-center">
+      <img src="{{item.product.urlImagem}}" class="product_image" />
     </div>
+    <div class="medium-5 columns">
+      <span class="text--bold js-product-name">{{item.product.nome}}</span>
+      <p class="js-product-desc">{{item.product.codigoDoProduto}}</p>
+    </div>
+    <div class="medium-2 columns text-right">
+      <p class="text--red js-product-costs">{{item.quantity}} x {{item.product.precoUnitario | currency:'BRL':true}}</p>
+    </div>
+    <div class="medium-3 columns text-right">
+      <p class="text--bold text--red js-product-total">{{item.totalCost | currency:'BRL':true}}</p>
+    </div>
+  </div>
+</div>
+<div class="medium-4 columns">
+  <h4>Formas de Pagamento</h4>
+
+  <div class="row delivery-option" *ngFor="let option of deliveryOptions">
+    <div class="small-1 columns">
+      <input type="radio" name="delivery_option" id="{{option.nome}}" [checked]="option.id === (cart | async).deliveryOptionId"
+        (click)="setDeliveryOption(option)">
+    </div>
+    <div class="small-10 columns">
+      <label class="text--bold js-option-name" for="{{option.nome}}" (click)="setDeliveryOption(option)">
+        <h5 class="text--bold text--red js-option-price">{{option.nome}}</h5>
+      </label>
+
+    </div>
+  </div>
+
+  <div class="small-12 columns small-centered">
+    <div *ngIf="(cart | async).deliveryOptionId === '1'">
+      <h5 class="text--blue">
+        Por favor preencha os dados do cartão...
+      </h5>
+
+      <div class="input-group">
+        <span class="input-group-addon">Numero do Cartão</span>
+        <input type="text" class="form-control" placeholder="0000-0000-0000-0000">
+
+      </div>
+
+      <div class="small-4 form-group input-group-btn">
+        <select class="form-control" id="sel1">
+          <option>Master</option>
+          <option>Visa</option>
+          <option>Elo</option>
+        </select>
+      </div>
+      <br>
+
+      <div class="input-group">
+        <span class="input-group-addon">Cvv</span>
+        <input type="text" class="form-control">
+        <span class="input-group-addon">Venc.</span>
+        <input type="text" class="form-control" placeholder="Username">
+
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon">Nome Completo</span>
+        <input type="text" class="form-control" placeholder="Username">
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="small-12 columns small-centered">
+    <h5 class="text--red" *ngIf="(cart | async).deliveryOptionId === undefined">Por favor selecione a entrega...</h5>
+    <a class="success button expanded" (click)=enviarPedido() *ngIf="(cart | async).deliveryOptionId !== undefined">
+      <h5>Finalizar Pagamento</h5>
+    </a>
+  </div>
+
 </div>

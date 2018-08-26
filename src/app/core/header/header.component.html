@@ -12,14 +12,15 @@
             <div class="top-bar-right" *ngIf="(user$ | async) as user; else login top-bar-left">
                 <span class="navbar-text ">
                     <i class="fa fa-user-circle mr-1"></i>
-                    <a class="mr-1">{{ user.name }}</a>
+                    <a class="mr-1">{{ user.username }}</a>
                     <a (click)="logout()">(Logout)</a>
                 </span>
             </div>
 
-            <div class="top-bar-right">
+            <div class="top-bar-right" *ngIf="(user$ | async) as user;">
                 <span class="navbar-text ">
-                    <a [routerLink]="['/meuspedidos']">Meus Pedidos</a>
+                        <i class="fa fa-user-circle mr-1"></i>
+                        <a [routerLink]="['/meuspedidos']">Meus Pedidos</a>
                 </span>
             </div>
         </div>

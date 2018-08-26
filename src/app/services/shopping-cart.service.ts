@@ -77,10 +77,7 @@ export class ShoppingCartService {
     cart.itemsTotal = cart.items
                           .map((item) => item.quantity * this.products.find((p) => p.id === item.productId).precoUnitario)
                           .reduce((previous, current) => previous + current, 0);
-    cart.deliveryTotal = cart.deliveryOptionId ?
-                          this.deliveryOptions.find((x) => x.id === cart.deliveryOptionId).precoUnitario :
-                          0;
-    cart.grossTotal = cart.itemsTotal + cart.deliveryTotal;
+    cart.grossTotal = cart.itemsTotal;
   }
 
   private retrieve(): ShoppingCart {

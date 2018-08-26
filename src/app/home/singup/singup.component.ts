@@ -121,7 +121,23 @@ export class SignUpComponent implements OnInit {
             this.clienteService
                 .cadastrarCliente(authToken, idUser, newUser)
                 .subscribe(
-                    () => this.router.navigate(['']),
+                    () => {
+                        this.router.navigate([''])
+                        this.authService
+                        .authenticate(newUser.userName, newUser.password)
+                        .subscribe(
+                            autenticacao => {
+                                console.log(`User ${newUser.userName} authenticated with token ${authToken}`);
+                                authToken = autenticacao.token;
+                                debugger;
+                                this.userService.setToken(authToken);
+                            },
+                            err => {
+                                console.log(err);
+                            }
+                        )
+
+                },
                     err => console.log(err)
                 );
         }, 2500);

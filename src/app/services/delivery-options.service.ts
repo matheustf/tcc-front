@@ -15,15 +15,14 @@ export class DeliveryOptionsDataService extends CachcingServiceBase {
 
   public all(): Observable<DeliveryOption[]> {
     return this.cache<DeliveryOption[]>(() => this.deliveryOptions,
-                                        (val: Observable<DeliveryOption[]>) => this.deliveryOptions = val,
-                                        () => this.http
-                                                  .get("./assets/delivery-options.json")
-                                                  .map((response) => response.json()
-                                                                             .map((item) => {
-                                                                                let model = new DeliveryOption();
-                                                                                model.updateFrom(item);
-                                                                                return model;
-                                                                              })));
+      (val: Observable<DeliveryOption[]>) => this.deliveryOptions = val,
+      () => this.http
+        .get("./assets/delivery-options.json")
+        .map((response) => response.json()
+          .map((item) => {
+            let model = new DeliveryOption();
+            return model;
+          })));
 
   }
 }

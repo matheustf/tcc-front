@@ -28,7 +28,7 @@ export class UserService {
     private decodeAndNotify() {
         const token = this.tokenService.getToken();
         const user = jtw_decode(token) as User;
-        this.userName = user.nome;
+        this.userName = user.username;
         this.userSubject.next(user);
     }
 
