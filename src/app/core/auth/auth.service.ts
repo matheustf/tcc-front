@@ -22,11 +22,11 @@ export class AuthService {
      }
 
   authenticate(userName: string, password: string): Observable<Autheticacao> {
-    debugger;
+    //debugger;
       return this.http
       .post(this.url, JSON.stringify({ "username": userName, "password": password }), { headers: this.headers })
       .map(res => {
-        debugger;
+        //debugger;
         console.log("AUTHENTICATE");
         console.log(res.json());
         return res.json();

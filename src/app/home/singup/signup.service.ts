@@ -39,11 +39,11 @@ export class SignUpService {
           });
         
         let options = new RequestOptions({ headers: headers });
-        debugger;
+       // debugger;
         return this.http
             .post(this.urlCliente, JSON.stringify({"nome": newUser.fullName, "dataDeNascimento": "10/10/1990", "cpf": newUser.cpf }), options)
             .map(res => {
-                debugger;
+                //debugger;
                 console.log("HEADER");
                 console.log(res.json());
                 return res.json();

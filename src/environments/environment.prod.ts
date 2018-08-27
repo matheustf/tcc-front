@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  apiAvaliacoesUrl: 'http://localhost:8084/',
-  apiEntregasUrl: 'http://localhost:8083/',
-  apiVendasUrl: 'http://localhost:8080/',
-  apiOAuthUrl: 'http://localhost:8085/',
+  apiAvaliacoesUrl: 'http://avaliacao:8084',
+  apiEntregasUrl: 'http://entrega1:8083',
+  apiVendasUrl: 'http://vendas1:8080',
+  apiOAuthUrl: 'http://oauth1:8085',
 };

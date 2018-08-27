@@ -14,7 +14,7 @@ export class AvaliacaoService {
   http: Http;
   headers: Headers;
 
-  url: string = environment.apiAvaliacoesUrl + 'avaliacoes';
+  url: string = environment.apiAvaliacoesUrl + '/avaliacoes';
 
   public constructor(http: Http) {
     this.http = http;
@@ -25,7 +25,7 @@ export class AvaliacaoService {
   }
 
   inserirAvaliacao(avaliacao: Avaliacao): Observable<Avaliacao> {
-    debugger;
+   // debugger;
       return this.http
       .post(this.url, JSON.stringify(avaliacao), { headers: this.headers })
       .map(res => res.json());

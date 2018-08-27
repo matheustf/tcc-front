@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Usuario } from './../../models/usuario.model';
 import { Autheticacao } from './../../models/autenticacao.model';
 import { Injectable } from '@angular/core';
@@ -9,7 +10,7 @@ import { Observable } from "rxjs/Observable";
 @Injectable()
 export class ClienteService {
 
-    url: string = "http://localhost:8085/api/cliente";
+    url: string = environment.apiOAuthUrl + '/api/cliente';
 
     constructor(private http: HttpClient) { }
 
@@ -19,7 +20,7 @@ export class ClienteService {
     }
 
     cadastrarCliente(authToken: string, id: string, newUser: NewUser) {
-        debugger;
+        //debugger;
         return this.http.post(this.url, {"nome": newUser.fullName, "dataDeNascimento": "10/10/1990", "cpf": newUser.cpf });
     }
 }

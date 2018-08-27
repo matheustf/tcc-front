@@ -14,7 +14,7 @@ export class ProdutoService {
   http: Http;
   headers: Headers;
 
-  url: string = environment.apiVendasUrl + 'produtos/codigoDoProduto/';
+  url: string = environment.apiVendasUrl + '/produtos/codigoDoProduto/';
 
   public constructor(http: Http) {
     this.http = http;

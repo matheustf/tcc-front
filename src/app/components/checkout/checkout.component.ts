@@ -120,13 +120,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       this.pedidoService
         .criarPedido(pedido)
         .subscribe(pedidoCriado => {
-          debugger;
+          //debugger;
 
           this.pedidoService
           .efetuarPedido(pedidoCriado.codigoDoPedido)
           .subscribe(res => {
             this.mensagem = res.mensagem;
-            debugger;
+            //debugger;
             this.router.navigate(['/confirmed']);
             
           }, erro => console.log(erro));

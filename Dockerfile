@@ -14,7 +14,7 @@ RUN npm install -g npm@3.5.2 --silent
 
 COPY . .
 
-RUN ng build
+RUN ng build --env=prod 
 
 EXPOSE 4200
-CMD ["ng", "serve", "-H", "0.0.0.0"] 
+CMD ["ng", "serve", "--env=prod", "-H", "0.0.0.0"] 

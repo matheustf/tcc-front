@@ -16,7 +16,7 @@ export class ProductsDataService extends CachcingServiceBase {
 
   private products: Observable<Product[]>;
 
-  url: string = environment.apiVendasUrl + 'produtos';
+  url: string = environment.apiVendasUrl + '/produtos';
 
   public constructor(http: Http) {
     super();

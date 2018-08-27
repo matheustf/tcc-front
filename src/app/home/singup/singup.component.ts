@@ -98,14 +98,14 @@ export class SignUpComponent implements OnInit {
 
         setTimeout(() => {
             console.log("AUTH");
-            debugger;
+            //debugger;
             this.authService
                 .authenticate(newUser.userName, newUser.password)
                 .subscribe(
                     autenticacao => {
                         console.log(`User ${newUser.userName} authenticated with token ${authToken}`);
                         authToken = autenticacao.token;
-                        debugger;
+                       // debugger;
                         this.userService.setToken(authToken);
                     },
                     err => {
@@ -115,7 +115,7 @@ export class SignUpComponent implements OnInit {
         }, 1500)
 
         setTimeout(() => {
-            debugger;
+          //  debugger;
             console.log("CADASTRO");
             console.log("TOKEN " + authToken);
             this.clienteService
@@ -129,7 +129,7 @@ export class SignUpComponent implements OnInit {
                             autenticacao => {
                                 console.log(`User ${newUser.userName} authenticated with token ${authToken}`);
                                 authToken = autenticacao.token;
-                                debugger;
+                               // debugger;
                                 this.userService.setToken(authToken);
                             },
                             err => {

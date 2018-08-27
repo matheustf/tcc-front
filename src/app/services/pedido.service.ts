@@ -14,7 +14,7 @@ export class PedidoDataService extends CachcingServiceBase {
   http: Http;
   headers: Headers;
 
-  url: string = environment.apiVendasUrl + 'pedidos/';
+  url: string = environment.apiVendasUrl + '/pedidos/';
 
   public constructor(http: Http) {
     super();
