@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  apiAvaliacoesUrl: 'http://avaliacao:8084',
-  apiEntregasUrl: 'http://entrega1:8083',
-  apiVendasUrl: 'http://vendas1:8080',
-  apiOAuthUrl: 'http://oauth1:8085',
+  apiAvaliacoesUrl: 'http://zuul:9090/avaliacao',
+  apiEntregasUrl: 'http://zuul:9090/entrega1',
+  apiVendasUrl: 'http://zuul:9090/vendas1',
+  apiOAuthUrl: 'http://zuul:9090/oauth1',
 };
