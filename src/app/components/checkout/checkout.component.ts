@@ -111,7 +111,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
 
       //MUDAR FORMA DE PAGAMENTO
-      pedido.formaDePagamento = "BOLETO";
+      pedido.formaDePagamento = "CREDITO";
 
       console.log("CONSTRUIU");
       console.log(pedido);
