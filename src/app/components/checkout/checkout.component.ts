@@ -122,8 +122,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         .subscribe(pedidoCriado => {
           //debugger;
 
-          this.pedidoService
-          .efetuarPedido(pedidoCriado.codigoDoPedido)
+          this.productsService
+          .efetuarOPedido(pedidoCriado.codigoDoPedido)
           .subscribe(res => {
             this.mensagem = res.mensagem;
             //debugger;

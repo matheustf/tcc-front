@@ -32,7 +32,7 @@ export class ProductsDataService extends CachcingServiceBase {
     return this.cache<Product[]>(() => this.products,
       (val: Observable<Product[]>) => this.products = val,
       () => this.http
-        .get(this.url)
+        .get(this.url + "/produtos")
         .map((response) => response.json()
           .map((item) => {
             console.log(item);
@@ -43,9 +43,18 @@ export class ProductsDataService extends CachcingServiceBase {
 
   }
 
+
+  efetuarOPedido(idPedido: string): Observable<any> {
+    console.log("ENVIANDO");
+    return this.http
+      .post(this.url + "/pedidos/" + idPedido + "/efetuarPedido", { headers: this.headers })
+      .map((response) => response.json()
+      );
+  }
+
   find(codigoDoProduto: string): Observable<Product> {
     return this.http
-      .get(this.url + codigoDoProduto)
+      .get(this.url + "/produtos" + codigoDoProduto)
       .map((response) => response.json()
       );
   }
