@@ -38,65 +38,216 @@
     </div>
   </div>
 </div>
+
+
+<div *ngIf="concluirEndereco===false">
+
 <div class="medium-4 columns">
-  <h4>Formas de Pagamento</h4>
 
-  <div class="row delivery-option" *ngFor="let option of deliveryOptions">
-    <div class="small-1 columns">
-      <input type="radio" name="delivery_option" id="{{option.nome}}" [checked]="option.id === (cart | async).deliveryOptionId"
-        (click)="setDeliveryOption(option)">
-    </div>
-    <div class="small-10 columns">
-      <label class="text--bold js-option-name" for="{{option.nome}}" (click)="setDeliveryOption(option)">
-        <h5 class="text--bold text--red js-option-price">{{option.nome}}</h5>
+  <div class="card-header card-header-icon element black" data-background-color="black">
+    <h4>
+      <i class="material-icons">location_on</i>Endereco de Entrega</h4>
+  </div>
+  <hr/>
+
+  <div class="small-10 columns">
+
+    <div *ngIf="endereco && edicaoEndereco===false">
+      <label class="text--bold js-option-name">
+        <h5 class="text--bold text--red js-option-price">Endereco Cadastrado</h5>
       </label>
-
+      <a id="buttoneditar" (click)="editarEndereco(endereco)" class="info button large">
+        Editar
+      </a>
+      <h4>
+        <b>Destinatário:{{endereco.destinatario}}</b>
+      </h4>
+      <h5>
+        <b>CEP:</b> {{endereco.cep}}</h5>
+      <h5>
+        <b>Rua:</b> {{endereco.logradouro}}</h5>
+      <h5>
+        <b>Número:</b> {{endereco.numero}}</h5>
+      <h5>
+        <b>Complemento:</b> {{endereco.complemento}}</h5>
+      <h5>
+        <b>Bairro:</b> {{endereco.bairro}}</h5>
+      <h5>
+        <b>Cidade:</b> {{endereco.cidade}}</h5>
+      <h5>
+        <b>Pais:</b> {{endereco.pais}}</h5>
     </div>
-  </div>
 
-  <div class="small-12 columns small-centered">
-    <div *ngIf="(cart | async).deliveryOptionId === '1'">
-      <h5 class="text--blue">
-        Por favor preencha os dados do cartão...
-      </h5>
-
-      <div class="input-group">
-        <span class="input-group-addon">Numero do Cartão</span>
-        <input type="text" class="form-control" placeholder="0000-0000-0000-0000">
-
-      </div>
-
-      <div class="small-4 form-group input-group-btn">
-        <select class="form-control" id="sel1">
-          <option>Master</option>
-          <option>Visa</option>
-          <option>Elo</option>
-        </select>
-      </div>
-      <br>
-
-      <div class="input-group">
-        <span class="input-group-addon">Cvv</span>
-        <input type="text" class="form-control">
-        <span class="input-group-addon">Venc.</span>
-        <input type="text" class="form-control" placeholder="Username">
-
-      </div>
-
-      <div class="input-group">
-        <span class="input-group-addon">Nome Completo</span>
-        <input type="text" class="form-control" placeholder="Username">
-      </div>
-
+    <div class="small-12 columns small-centered">
+      <a class="success button expanded" (click)=concluirPedido(true)>
+        <h5>Endereço Correto</h5>
+      </a>
     </div>
 
   </div>
 
   <div class="small-12 columns small-centered">
-    <h5 class="text--red" *ngIf="(cart | async).deliveryOptionId === undefined">Por favor selecione a entrega...</h5>
-    <a class="success button expanded" (click)=enviarPedido() *ngIf="(cart | async).deliveryOptionId !== undefined">
-      <h5>Finalizar Pagamento</h5>
-    </a>
-  </div>
+    <div *ngIf="!endereco || edicaoEndereco===true">
+      <label class="text--bold js-option-name">
+        <h5 class="text--bold text--red js-option-price">Cadastrar Endereco</h5>
+      </label>
+      <form #f="ngForm" novalidate (ngSubmit)="save(f.value, f.valid)">
 
+        <div class="card-content">
+          <div class="form-group input-group">
+            <span class="input-group-addon">CEP
+              <span class="star">*</span>
+            </span>
+            <input type="text" #cep (keyup)="0" (blur)="buscarCep(cep.value)" class="form-control text-light" [(ngModel)]="novoEndereco.cep"
+              name="cep" required>
+          </div>
+
+          <div class="form-group input-group">
+            <span class="input-group-addon">Rua
+              <span class="star">*</span>
+            </span>
+            <input type="text" #logradouro="ngModel" class="form-control text-light" [(ngModel)]="novoEndereco.logradouro" name="logradouro"
+              required>
+          </div>
+
+          <div class="form-group input-group">
+            <span class="input-group-addon">Numero
+              <span class="star">*</span>
+            </span>
+            <input type="text" #numero="ngModel" class="form-control text-light" [(ngModel)]="novoEndereco.numero" name="numero" required>
+          </div>
+
+          <div class="form-group input-group">
+            <span class="input-group-addon">Complemento</span>
+            <input type="text" #complemento="ngModel" class="form-control text-light" [(ngModel)]="novoEndereco.complemento" name="complemento">
+          </div>
+
+          <div class="form-group input-group">
+            <span class="input-group-addon">Bairro
+              <span class="star">*</span>
+            </span>
+            <input type="text" #bairro="ngModel" class="form-control text-light" [(ngModel)]="novoEndereco.bairro" name="bairro" required>
+          </div>
+
+          <div class="form-group input-group">
+            <span class="input-group-addon">Cidade
+              <span class="star">*</span>
+            </span>
+            <input type="text" #cidade="ngModel" class="form-control text-light" [(ngModel)]="novoEndereco.cidade" name="cidade" required>
+          </div>
+
+          <div class="form-group input-group">
+            <span class="input-group-addon">Estado
+              <span class="star">*</span>
+            </span>
+            <input type="text" #estado="ngModel" class="form-control text-light" [(ngModel)]="novoEndereco.estado" name="estado" required>
+          </div>
+
+          <div class="form-group input-group">
+            <span class="input-group-addon">Destinatário
+              <span class="star">*</span>
+            </span>
+            <input type="text" #destinatario="ngModel" class="form-control text-light" [(ngModel)]="novoEndereco.destinatario" name="destinatario"
+              required>
+          </div>
+
+          <div class="form-footer text-center">
+            <div class="form-group card-footer ">
+              <a class="info button large">
+                <button type="submit" class="btn waves-effect waves-light element black" [disabled]="!f.valid">Salvar Endereço</button>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+
+<div *ngIf="concluirEndereco===true">
+
+  <div class="medium-4 columns">
+    <h4>Formas de Pagamento</h4>
+
+    <div class="row delivery-option" *ngFor="let option of deliveryOptions">
+      <div class="small-1 columns">
+        <input type="radio" name="delivery_option" id="{{option.nome}}" [checked]="option.id === (cart | async).deliveryOptionId"
+          (click)="setDeliveryOption(option)">
+      </div>
+      <div class="small-10 columns">
+        <label class="text--bold js-option-name" for="{{option.nome}}" (click)="setDeliveryOption(option)">
+          <h5 class="text--bold text--red js-option-price">{{option.nome}}</h5>
+        </label>
+
+      </div>
+    </div>
+
+    <div class="small-12 columns small-centered">
+      <div *ngIf="(cart | async).deliveryOptionId === '1'">
+        <h5 class="text--blue">
+          Por favor preencha os dados do cartão...
+        </h5>
+
+        <div class="input-group">
+          <span class="input-group-addon">Numero do Cartão</span>
+          <input type="text" class="form-control" placeholder="0000-0000-0000-0000">
+
+        </div>
+
+        <div class="small-4 form-group input-group-btn">
+          <select class="form-control" id="sel1">
+            <option>Master</option>
+            <option>Visa</option>
+            <option>Elo</option>
+          </select>
+        </div>
+        <br>
+
+        <div class="input-group">
+          <span class="input-group-addon">Cvv</span>
+          <input type="text" class="form-control">
+          <span class="input-group-addon">Venc.</span>
+          <input type="text" class="form-control" placeholder="Username">
+
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon">Nome Completo</span>
+          <input type="text" class="form-control" placeholder="Username">
+        </div>
+
+      </div>
+
+      <div *ngIf="(cart | async).deliveryOptionId === '2'">
+        <a routerLink="/checkout">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUUXzA0lvTTPRKqSP_kuHI3VClzUcM6y-4tADevsBxXXfTsR8" height="20"
+            width="250" class="product_image" />
+        </a>
+      </div>
+
+      <div *ngIf="(cart | async).deliveryOptionId === '3'">
+        <a routerLink="/checkout">
+          <p>Gerar Boleto
+            <p>
+              <img src="https://www.paguedojeitocerto.com.br/content/assets/images/icon/boleto.png" height="20" width="130" class="product_image"
+              />
+        </a>
+      </div>
+
+    </div>
+
+    <div class="small-12 columns small-centered">
+      <h5 class="text--red" *ngIf="(cart | async).deliveryOptionId === undefined">Por favor selecione a entrega...</h5>
+      <a class="success button expanded" (click)=enviarPedido() *ngIf="(cart | async).deliveryOptionId !== undefined">
+        <h5>Finalizar Pagamento</h5>
+      </a>
+    </div>
+
+  </div>
 </div>

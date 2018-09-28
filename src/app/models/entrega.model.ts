@@ -8,6 +8,7 @@ export class Entrega {
   public codigoDeRastreio: string;
   public estimativaDeEntrega: string;
   public statusDaEntrega: string;
+  public urlFornecedor: string;
 
   public historicoDeEntrega: HistoricoDeEntrega[] = new Array<HistoricoDeEntrega>();
 

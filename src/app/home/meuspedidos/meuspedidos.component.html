@@ -8,107 +8,111 @@
 
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-            <div *ngFor="let pedido of pedidos;let index = index;">
+            <div *ngFor="let pedido of pedidos.slice().reverse();let index = index;">
                 <!-- ********************** ACCORDION********************** -->
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{pedido.codigoDoPedido}}" aria-expanded="true" aria-controls="collapseOne">
                                 <i class="more-less glyphicon glyphicon-plus"></i>
-                                <h3 class="panel-title">Pedido: {{pedido.codigoDoPedido}}</h3>
+
+                                <label class="text--bold js-option-name">
+                                    <h3 id="textcolorblue" class="panel-title text--bold js-option-price">{{pedido.codigoDoPedido}}</h3>
+                                </label>
                             </a>
                         </h4>
                     </div>
                     <div id="{{pedido.codigoDoPedido}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                        <div class="panel-body">
 
-                            <div *ngFor="let compra of pedido.compras;let index = index;">
+                            <div class="panel-body">
 
-                                <!--ITEM**************************************************************************************************************************************************-->
-                                <div class="panel panel-info">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">{{compra.produto.nome}}</h3>
-                                    </div>
+                                <div *ngFor="let compra of pedido.compras;let index = index;">
+
+                                    <!--ITEM**************************************************************************************************************************************************-->
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">{{compra.produto.nome}}</h3>
+                                        </div>
 
 
-                                    <!-- RESPONSIVO -->
-                                    <div class="table-responsive">
+                                        <!-- RESPONSIVO -->
+                                        <div class="table-responsive">
 
-                                        <!-- TABELA -->
-                                        <table class="table table-hover table table-bordered">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Codigo de Entrega</th>
-                                                    <th scope="col">Produto</th>
-                                                    <th scope="col">Quantidade</th>
-                                                    <th scope="col">Valor</th>
-                                                    <th scope="col">Data da Compra</th>
-                                                    <th scope="col">Data de Entrega</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>{{compra.entrega.codigoDaEntrega}}</td>
-                                                    <td>{{compra.produto.nome}}</td>
-                                                    <td>{{compra.quantidade}}</td>
-                                                    <td>{{compra.valorDaCompra | currency:'BRL':true}}</td>
-                                                    <td>{{pedido.dataDoPedido}}</td>
-                                                    <td>{{compra.entrega.estimativaDeEntrega}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <br>
-                                        <br>
+                                            <!-- TABELA -->
+                                            <table class="table table-hover table table-bordered">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th scope="col">Codigo de Entrega</th>
+                                                        <th scope="col">Produto</th>
+                                                        <th scope="col">Quantidade</th>
+                                                        <th scope="col">Valor</th>
+                                                        <th scope="col">Data da Compra</th>
+                                                        <th scope="col">Data de Entrega</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{compra.entrega.codigoDaEntrega}}</td>
+                                                        <td>{{compra.produto.nome}}</td>
+                                                        <td>{{compra.quantidade}}</td>
+                                                        <td>{{compra.valorDaCompra | currency:'BRL':true}}</td>
+                                                        <td>{{pedido.dataDoPedido}}</td>
+                                                        <td>{{compra.entrega.estimativaDeEntrega}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <br>
+                                            <br>
 
-                                        <!-- PIPELINE DE ENTREGA -->
-                                        <div class="stepwizard">
-                                            <div class="stepwizard-row">
+                                            <!-- PIPELINE DE ENTREGA -->
+                                            <div class="stepwizard">
+                                                <div class="stepwizard-row">
 
-                                                <div *ngIf="compra.entrega.statusDaEntrega == 'EM_SEPARACAO'" class="stepwizard-step">
-                                                    <button type="button" class="btn btn-primary btn-circle">1</button>
-                                                    <p>Em Separacao</p>
+                                                    <div *ngIf="compra.entrega.statusDaEntrega == 'EM_SEPARACAO'" class="stepwizard-step">
+                                                        <button type="button" class="btn btn-primary btn-circle">1</button>
+                                                        <p>Em Separacao</p>
+                                                    </div>
+                                                    <div *ngIf="compra.entrega.statusDaEntrega != 'EM_SEPARACAO'" class="stepwizard-step">
+                                                        <button type="button" class="btn btn-default btn-circle">1</button>
+                                                        <p>Em Separacao</p>
+                                                    </div>
+
+
+                                                    <div *ngIf="compra.entrega.statusDaEntrega == 'ENVIADO'" class="stepwizard-step">
+                                                        <button type="button" class="btn btn-primary btn-circle">1</button>
+                                                        <p>Enviado</p>
+                                                    </div>
+                                                    <div *ngIf="compra.entrega.statusDaEntrega != 'ENVIADO'" class="stepwizard-step">
+                                                        <button type="button" class="btn btn-default btn-circle">1</button>
+                                                        <p>Enviado</p>
+                                                    </div>
+
+                                                    <div *ngIf="compra.entrega.statusDaEntrega == 'EM_TRANSPORTE'" class="stepwizard-step">
+                                                        <button type="button" class="btn btn-primary btn-circle">1</button>
+                                                        <p>Em Transponte</p>
+                                                    </div>
+                                                    <div *ngIf="compra.entrega.statusDaEntrega != 'EM_TRANSPORTE'" class="stepwizard-step">
+                                                        <button type="button" class="btn btn-default btn-circle">1</button>
+                                                        <p>Em Transponte</p>
+                                                    </div>
+
+                                                    <div *ngIf="compra.entrega.statusDaEntrega == 'ENTREGUE'" class="stepwizard-step">
+                                                        <button type="button" class="btn btn-primary btn-circle">1</button>
+                                                        <p>Entregue</p>
+                                                    </div>
+                                                    <div *ngIf="compra.entrega.statusDaEntrega != 'ENTREGUE'" class="stepwizard-step">
+                                                        <button type="button" class="btn btn-default btn-circle">1</button>
+                                                        <p>Entregue</p>
+                                                    </div>
+
+
                                                 </div>
-                                                <div *ngIf="compra.entrega.statusDaEntrega != 'EM_SEPARACAO'" class="stepwizard-step">
-                                                    <button type="button" class="btn btn-default btn-circle">1</button>
-                                                    <p>Em Separacao</p>
-                                                </div>
-
-
-                                                <div *ngIf="compra.entrega.statusDaEntrega == 'ENVIADO'" class="stepwizard-step">
-                                                    <button type="button" class="btn btn-primary btn-circle">1</button>
-                                                    <p>Enviado</p>
-                                                </div>
-                                                <div *ngIf="compra.entrega.statusDaEntrega != 'ENVIADO'" class="stepwizard-step">
-                                                    <button type="button" class="btn btn-default btn-circle">1</button>
-                                                    <p>Enviado</p>
-                                                </div>
-
-                                                <div *ngIf="compra.entrega.statusDaEntrega == 'EM_TRANSPORTE'" class="stepwizard-step">
-                                                    <button type="button" class="btn btn-primary btn-circle">1</button>
-                                                    <p>Em Transponte</p>
-                                                </div>
-                                                <div *ngIf="compra.entrega.statusDaEntrega != 'EM_TRANSPORTE'" class="stepwizard-step">
-                                                    <button type="button" class="btn btn-default btn-circle">1</button>
-                                                    <p>Em Transponte</p>
-                                                </div>
-
-                                                <div *ngIf="compra.entrega.statusDaEntrega == 'ENTREGUE'" class="stepwizard-step">
-                                                    <button type="button" class="btn btn-primary btn-circle">1</button>
-                                                    <p>Entregue</p>
-                                                </div>
-                                                <div *ngIf="compra.entrega.statusDaEntrega != 'ENTREGUE'" class="stepwizard-step">
-                                                    <button type="button" class="btn btn-default btn-circle">1</button>
-                                                    <p>Entregue</p>
-                                                </div>
-
-
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <!-- INFORMACOES ADICIONAIS -->
+                                        <!-- INFORMACOES ADICIONAIS -->
 
-                                    <!-- ERROS 
+                                        <!-- ERROS 
                                 <div class="panel-body">
                                     Status da entrega: PROBLEMAS NA ENTREGA
                                 </div>
@@ -118,91 +122,119 @@
                                 </div>
                                 -->
 
-                                    <hr/>
-
-
-                                    <div class="panel-body">
-                                        <div style="text-align:center">
-                                            <p>Status da entrega: {{compra.entrega.statusDaEntrega}}</p>
-                                            <p>Data: {{compra.entrega.historicoDeEntrega[0].data}}</p>
-
-                                            <div class="medium-4 columns text-right">
-                                                <a class="info button large" (click)="setOpen(compra)">Avaliar Produto</a>
-                                            </div>
-                                        </div>
                                         <hr/>
 
 
+                                        <div class="panel-body">
+                                            <div style="text-align:center">
+                                                <p>Status da entrega: {{compra.entrega.statusDaEntrega}}</p>
+                                                <p>Data: {{compra.entrega.historicoDeEntrega[0].data}}</p>
+
+                                                <div class="medium-4 columns text-right">
+                                                    <a class="info button large" (click)="setOpen(compra)">Avaliar Produto</a>
+                                                </div>
+                                            </div>
+                                            <hr/>
 
 
+                                            <div *ngIf="compra.check == 1">
 
+                                                edicao: {{compra.avaliacao.edicao}}
+                                                <div *ngIf="compra.avaliacao != null && compra.avaliacao.edicao == 0">
+                                                    <!-- CARD AVALIACAO -->
+                                                    <div class="card">
+                                                        <div class="thumbnail">
+                                                            <div class="caption">
+                                                                <h3>
+                                                                    {{compra.avaliacao.titulo}}
 
-                                        <div *ngIf="compra.check == 1" class="container">
-                                            <div class="row">
-                                                <div class="col-xs-12 col-lg-offset-2 ">
-
-                                                    <div class="input-group">
-                                                        <p>Titulo:</p>
-                                                        <input type="text" #titulo class="form-control">
-                                                
-                                                      </div>
-
-                                                    <p>Texto:</p>
-                                                    <!--Textarea with icon prefix-->
-                                                    <div class="md-form">
-                                                        <i class="fa fa-pencil prefix"></i>
-                                                        <textarea type="text"  #titleInput id="form8" class="md-textarea form-control" mdbInputDirective></textarea>
+                                                                    <small>
+                                                                        {{compra.produto.marca}}:{{compra.produto.modelo}}
+                                                                    </small>
+                                                                    <small>
+                                                                        Nota: {{compra.avaliacao.notaDeSatisfacao}}
+                                                                    </small>
+                                                                </h3>
+                                                                <hr>
+                                                                <p>
+                                                                    {{compra.avaliacao.descricao}}
+                                                                </p>
+                                                                <button class="btn btn-default" (click)="setEdicao(compra.avaliacao)" role="button">Editar Avaliação</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-
-
-                                                    <p>Nota:</p>
-
-                                                    <select name="wgtmsr" id="wgtmsr" #titleInputBox style="width: 50px !important; min-width: 50px; max-width: 50px; min-height: 30px; max-height: 30px; height: 50px !important;"
-                                                         (ngModel)="lUsers">
-                                                        <option id="wgtmsr" *ngFor="let user of lUsers" [ngValue]="user">
-                                                            {{user}}
-                                                        </option>
-                                                    </select>
-
-                                                    <br>
-
 
                                                 </div>
 
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-xs-12 col-xs-offset-2 col-lg-offset-7">
-                                                    <div>
-                                                        <button type="button" class="btn btn-success" (click)="avaliar(titulo.value, titleInput.value, titleInputBox.value, pedido, compra)">Enviar</button>
-                                                    </div>
+                                                <div *ngIf="compra.avaliacao == null || compra.avaliacao.edicao == 1">
+                                                    <!-- FORMULARIO AVALIACAO -->
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-lg-offset-2 ">
 
+                                                                <div class="input-group">
+                                                                    <p>Titulo:</p>
+                                                                    <input type="text" value="{{compra.avaliacao?.titulo}}" #titulo class="form-control">
+
+                                                                </div>
+
+                                                                <p>Texto:</p>
+                                                                <!--Textarea with icon prefix-->
+                                                                <div class="md-form">
+                                                                    <i class="fa fa-pencil prefix"></i>
+                                                                    <textarea type="text" value="{{compra.avaliacao?.descricao}}" #titleInput id="form8" class="md-textarea form-control" mdbInputDirective></textarea>
+                                                                </div>
+
+
+                                                                <p>Nota:</p>
+
+                                                                <select name="wgtmsr" id="wgtmsr" #titleInputBox style="width: 50px !important; min-width: 50px; max-width: 50px; min-height: 30px; max-height: 30px; height: 50px !important;"
+                                                                    (ngModel)="lUsers">
+                                                                    <option id="wgtmsr" *ngFor="let user of lUsers" selected="?{{compra.avaliacao?.notaDeSatisfacao}}" [ngValue]="user">
+                                                                        {{user}}
+                                                                    </option>
+                                                                </select>
+
+                                                                <br>
+
+
+                                                            </div>
+
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-xs-offset-2 col-lg-offset-7">
+                                                                <div>
+                                                                    <button type="button" class="btn btn-success" (click)="avaliar(titulo.value, titleInput.value, titleInputBox.value, pedido, compra)">Enviar</button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <br>
+
+                                        <!--FIM ITEM**************************************************************************************************************************************************-->
+
 
                                     </div>
-                                    <br>
-
-                                    <!--FIM ITEM**************************************************************************************************************************************************-->
-
-
                                 </div>
+
+
+
+
+
                             </div>
-
-
-
-
-
                         </div>
+
+                        <!-- ********************** FIM ACCORDION********************** -->
                     </div>
 
-                    <!-- ********************** FIM ACCORDION********************** -->
+
                 </div>
-
-
             </div>
         </div>
     </div>
-</div>
-<!-- panel-group -->
+    <!-- panel-group -->

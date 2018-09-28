@@ -18,12 +18,13 @@ export class RequestInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpSentEvent 
         | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
-       
+      // debugger
             if(this.tokenService.hasToken()) {
                 const token = this.tokenService.getToken();
                 req = req.clone({
                     setHeaders: {
-                        'x-access-token': token
+                        'x-access-token': token,
+                        'Content-Type': 'application/json'
                     }
                 });
             }

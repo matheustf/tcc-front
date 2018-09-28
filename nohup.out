@@ -5292,3 +5292,169 @@ java.lang.UnsupportedOperationException: This feature requires ASM5
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
 19:45:10.022 [Background Thread-1 (Spring IDE/3.9.5)] DEBUG org.springframework.data.repository.config.RepositoryConfigurationDelegate - Spring Data MongoDB - Registering repository: entregaRepository - Interface: com.puc.tcc.scheduler.repository.EntregaRepository - Factory: org.springframework.data.mongodb.repository.support.MongoRepositoryFactoryBean
+org.eclipse.m2e.logback.configuration: The org.eclipse.m2e.logback.configuration bundle was activated before the state location was initialized.  Will retry after the state location is initialized.
+org.eclipse.m2e.logback.configuration: Logback config file: /home/matheus/eclipsePhatonworkspace/.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.8.0.20170516-2043.xml
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [bundleresource://493.fwk943666520:1/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [bundleresource://493.fwk943666520:2/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+org.eclipse.m2e.logback.configuration: Initializing logback
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+Memory pressure relief: Total: res = 9478144/9269248/-208896, res+swap = 5828608/5582848/-245760
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+Memory pressure relief: Total: res = 9805824/9818112/12288, res+swap = 6213632/6213632/0
+Memory pressure relief: Total: res = 9805824/9809920/4096, res+swap = 6201344/6205440/4096
+Memory pressure relief: Total: res = 9809920/9809920/0, res+swap = 6205440/6205440/0
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+Exception in thread "DisconnectableInputStream source reader" Exception in thread "DisconnectableInputStream source reader" Exception in thread "DisconnectableInputStream source reader" Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Input Stream Closed
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:57)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:40)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Input Stream Closed
+	at org.eclipse.ui.console.IOConsoleInputStream.available(IOConsoleInputStream.java:268)
+	at org.eclipse.ui.console.IOConsoleInputStream.read(IOConsoleInputStream.java:95)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+org.gradle.api.UncheckedIOException: java.io.IOException: Input Stream Closed
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:57)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:40)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Exception in thread "DisconnectableInputStream source reader" Caused by: java.io.IOException: Input Stream Closed
+	at org.eclipse.ui.console.IOConsoleInputStream.available(IOConsoleInputStream.java:268)
+	at org.eclipse.ui.console.IOConsoleInputStream.read(IOConsoleInputStream.java:95)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+org.gradle.api.UncheckedIOException: java.io.IOException: Input Stream Closed
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:57)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:40)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Input Stream Closed
+	at org.eclipse.ui.console.IOConsoleInputStream.available(IOConsoleInputStream.java:268)
+	at org.eclipse.ui.console.IOConsoleInputStream.read(IOConsoleInputStream.java:95)
+Exception in thread "DisconnectableInputStream source reader" Exception in thread "DisconnectableInputStream source reader" 	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Input Stream Closed
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:57)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:40)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Input Stream Closed
+	at org.eclipse.ui.console.IOConsoleInputStream.available(IOConsoleInputStream.java:268)
+	at org.eclipse.ui.console.IOConsoleInputStream.read(IOConsoleInputStream.java:95)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+org.gradle.api.UncheckedIOException: java.io.IOException: Input Stream Closed
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:57)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:40)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Input Stream Closed
+	at org.eclipse.ui.console.IOConsoleInputStream.available(IOConsoleInputStream.java:268)
+	at org.eclipse.ui.console.IOConsoleInputStream.read(IOConsoleInputStream.java:95)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+org.gradle.api.UncheckedIOException: java.io.IOException: Input Stream Closed
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:57)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:40)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Input Stream Closed
+	at org.eclipse.ui.console.IOConsoleInputStream.available(IOConsoleInputStream.java:268)
+	at org.eclipse.ui.console.IOConsoleInputStream.read(IOConsoleInputStream.java:95)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+org.gradle.api.UncheckedIOException: java.io.IOException: Input Stream Closed
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:57)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:40)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Input Stream Closed
+	at org.eclipse.ui.console.IOConsoleInputStream.available(IOConsoleInputStream.java:268)
+	at org.eclipse.ui.console.IOConsoleInputStream.read(IOConsoleInputStream.java:95)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+org.gradle.api.UncheckedIOException: java.io.IOException: Input Stream Closed
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:57)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:40)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Input Stream Closed
+	at org.eclipse.ui.console.IOConsoleInputStream.available(IOConsoleInputStream.java:268)
+	at org.eclipse.ui.console.IOConsoleInputStream.read(IOConsoleInputStream.java:95)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+1   0x7f6d51953237 /usr/lib/x86_64-linux-gnu/libjavascriptcoregtk-4.0.so.18(WTFCrash+0x17) [0x7f6d51953237]
+2   0x7f6d49dee321 /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.0.so.37(+0x69e321) [0x7f6d49dee321]
+3   0x7f6d49e3295a /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.0.so.37(+0x6e295a) [0x7f6d49e3295a]
+4   0x7f6d49e329d9 /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.0.so.37(+0x6e29d9) [0x7f6d49e329d9]
+5   0x7f6d4a094d76 /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.0.so.37(+0x944d76) [0x7f6d4a094d76]
+6   0x7f6d9e9c5d9a /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0(g_object_unref+0x19a) [0x7f6d9e9c5d9a]
+7   0x7f6e04b76ff8 /lib/x86_64-linux-gnu/libc.so.6(+0x39ff8) [0x7f6e04b76ff8]
+8   0x7f6e04b77045 /lib/x86_64-linux-gnu/libc.so.6(+0x3a045) [0x7f6e04b77045]
+9   0x7f6e041d6987 /opt/javas/jdk1.8.0_144/jre/lib/amd64/server/libjvm.so(+0x690987) [0x7f6e041d6987]
+10  0x7f6e0461a685 /opt/javas/jdk1.8.0_144/jre/lib/amd64/server/libjvm.so(+0xad4685) [0x7f6e0461a685]
+11  0x7f6e04618a5a /opt/javas/jdk1.8.0_144/jre/lib/amd64/server/libjvm.so(+0xad2a5a) [0x7f6e04618a5a]
+12  0x7f6e04618dde /opt/javas/jdk1.8.0_144/jre/lib/amd64/server/libjvm.so(+0xad2dde) [0x7f6e04618dde]
+13  0x7f6e04619250 /opt/javas/jdk1.8.0_144/jre/lib/amd64/server/libjvm.so(+0xad3250) [0x7f6e04619250]
+14  0x7f6e04470338 /opt/javas/jdk1.8.0_144/jre/lib/amd64/server/libjvm.so(+0x92a338) [0x7f6e04470338]
+15  0x7f6e053286ba /lib/x86_64-linux-gnu/libpthread.so.0(+0x76ba) [0x7f6e053286ba]
+16  0x7f6e04c4441d /lib/x86_64-linux-gnu/libc.so.6(clone+0x6d) [0x7f6e04c4441d]
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f6d5195323c, pid=27334, tid=0x00007f6e00244700
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_144-b01) (build 1.8.0_144-b01)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.144-b01 mixed mode linux-amd64 compressed oops)
+# Problematic frame:
+# C  [libjavascriptcoregtk-4.0.so.18+0xdda23c]  WTFCrash+0x1c
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# An error report file with more information is saved as:
+# /opt/tcc/tcc-front/hs_err_pid27334.log
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#

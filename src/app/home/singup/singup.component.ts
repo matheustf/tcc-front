@@ -85,7 +85,7 @@ export class SignUpComponent implements OnInit {
         var idUser = "";
         var authToken = "";
         console.log("CADASTRO USUARIO");
-
+        console.log(newUser);
         this.signUpService
             .signup(newUser)
             .subscribe(

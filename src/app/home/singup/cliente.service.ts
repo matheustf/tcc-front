@@ -21,6 +21,6 @@ export class ClienteService {
 
     cadastrarCliente(authToken: string, id: string, newUser: NewUser) {
         //debugger;
-        return this.http.post(this.url, {"nome": newUser.fullName, "dataDeNascimento": "10/10/1990", "cpf": newUser.cpf });
+        return this.http.post(this.url, {"nome": newUser.fullName, "email": newUser.email ,"dataDeNascimento": "10/10/1990", "cpf": newUser.cpf });
     }
 }

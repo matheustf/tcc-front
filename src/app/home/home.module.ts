@@ -1,4 +1,6 @@
 import { AvaliacaoService } from './../services/avaliacao.service';
+import { EnderecoService } from './../services/endereco.service';
+import { CepService } from './../services/cep.service';
 import { ProdutoService } from './../services/produto.service';
 import { EntregaService } from './../services/entrega.service';
 import { RequestInterceptor } from './../core/auth/request.interceptor';
@@ -16,6 +18,7 @@ import { MeusPedidosComponent } from './meuspedidos/meuspedidos.component';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing.module';
 import { SignUpService } from './singup/signup.service';
+import { FornecedorService } from './../services/fornecedor.service';
 
 @NgModule({
     declarations: [ 
@@ -39,6 +42,9 @@ import { SignUpService } from './singup/signup.service';
         EntregaService, 
         ProdutoService,
         AvaliacaoService,
+        EnderecoService,
+        CepService,
+        FornecedorService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,

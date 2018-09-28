@@ -28,12 +28,10 @@ PRODUCT_2.codigoDoProduto = "desc2";
 const DELIVERY_OPT_1 = new DeliveryOption();
 DELIVERY_OPT_1.nome = "Delivery Option 1";
 DELIVERY_OPT_1.id = "1";
-DELIVERY_OPT_1.precoUnitario = 1;
 
 const DELIVERY_OPT_2 = new DeliveryOption();
 DELIVERY_OPT_2.nome = "Delivery Option 2";
 DELIVERY_OPT_2.id = "2";
-DELIVERY_OPT_2.precoUnitario = 2;
 
 class MockProductDataService extends ProductsDataService {
   public all(): Observable<Product[]> {
@@ -141,8 +139,6 @@ describe("CheckoutComponent", () => {
 
       expect(deliveryOptions.length).toEqual(2);
       expect(deliveryOptions[0].querySelector(".js-option-name").textContent).toEqual(DELIVERY_OPT_1.nome);
-      expect(deliveryOptions[0].querySelector(".js-option-price").textContent).toContain(DELIVERY_OPT_1.precoUnitario);
       expect(deliveryOptions[1].querySelector(".js-option-name").textContent).toEqual(DELIVERY_OPT_2.nome);
-      expect(deliveryOptions[1].querySelector(".js-option-price").textContent).toContain(DELIVERY_OPT_2.precoUnitario);
     })));
 });

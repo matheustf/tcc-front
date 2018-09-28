@@ -18,6 +18,7 @@ export class ShoppingCartService {
   private subscribers: Array<Observer<ShoppingCart>> = new Array<Observer<ShoppingCart>>();
   private products: Product[];
   private deliveryOptions: DeliveryOption[];
+  private enderecoOptions: DeliveryOption[];
 
   public constructor(private storageService: StorageService,
                      private productService: ProductsDataService,
@@ -73,6 +74,15 @@ export class ShoppingCartService {
     this.dispatch(cart);
   }
 
+
+  public setEnderecoOption(enderecoOptionId: DeliveryOption): void {
+    const cart = this.retrieve();
+    cart.enderecoOptionId = enderecoOptionId.id;
+    this.calculateCart(cart);
+    this.save(cart);
+    this.dispatch(cart);
+  }
+  
   private calculateCart(cart: ShoppingCart): void {
     cart.itemsTotal = cart.items
                           .map((item) => item.quantity * this.products.find((p) => p.id === item.productId).precoUnitario)

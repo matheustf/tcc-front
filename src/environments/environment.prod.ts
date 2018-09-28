@@ -4,4 +4,5 @@ export const environment = {
   apiEntregasUrl: 'http://zuul:9090/entrega1',
   apiVendasUrl: 'http://zuul:9090/vendas1',
   apiOAuthUrl: 'http://zuul:9090/oauth1',
+  cepPostmon: 'https://api.postmon.com.br/v1/cep'
 };

@@ -39,11 +39,19 @@ export class MeusPedidosComponent implements OnInit {
         }
     }
 
-    avaliar(titulo: string, descricao: string, box: string, pedido: Pedido, compra : Compra){
+    setEdicao(avaliacao: Avaliacao) {
+        avaliacao.edicao = true;
+        console.log("SET EDICAO")
+        console.log(avaliacao.edicao)
+        debugger
+    }
+
+    avaliar(titulo: string, descricao: string, box: string, pedido: Pedido, compra: Compra) {
         console.log(descricao);
-        console.log("teste "+ box);
+        console.log("teste " + box);
         let nota = box.split(" ");
         console.log(nota[1]);
+
 
         let avaliacao = new Avaliacao();
         avaliacao.idCliente = pedido.idCliente;
@@ -51,14 +59,32 @@ export class MeusPedidosComponent implements OnInit {
         avaliacao.notaDeSatisfacao = +nota[1];
         avaliacao.titulo = titulo;
         avaliacao.descricao = descricao;
+        avaliacao.idCompra = compra.codigoDaCompra;
+
+        avaliacao.edicao = false;
+
 
         console.log("AVALIACAO");
         console.log(avaliacao);
+debugger
+        if (compra.avaliacao == null) {
+            this.avaliacaoService.inserirAvaliacao(avaliacao)
+                .subscribe(avaliacao => {
+                    console.log("AVALIACAO ENVIADA");
+                    compra.avaliacao = avaliacao;
+                    compra.avaliacao.edicao = false;
+                });
 
-        this.avaliacaoService.inserirAvaliacao(avaliacao)
-        .subscribe(avaliacao => {
-            console.log("AVALIACAO ENVIADA");
-        });
+        } else {
+            compra.avaliacao = avaliacao;
+            compra.avaliacao.edicao = false;
+            this.avaliacaoService.updateAvaliacao(avaliacao)
+                .subscribe(avaliacao => {
+                    console.log("AVALIACAO ENVIADA UPDATE");
+                    debugger
+                });
+
+        }
 
     }
 
@@ -86,15 +112,25 @@ export class MeusPedidosComponent implements OnInit {
                                 compra.entrega.idFornecedor = entrega.idFornecedor;
                                 compra.entrega.statusDaEntrega = entrega.statusDaEntrega;
                                 compra.entrega.historicoDeEntrega = entrega.historicoDeEntrega;
-                               
+
                                 let e = entrega.codigoDaEntrega.split("-");
                                 let c = compra.codigoDaCompra.split("-");
-                               
+
                                 compra.entrega.codigoDaEntrega = e[1] + ":" + c[1];
 
                                 console.log("PEDIDOS E COMPRAS");
                                 console.log(pedidos);
                             });
+
+
+                        this.avaliacaoService.buscarAvaliacao(compra.codigoDaCompra)
+                            .subscribe(avaliacao => {
+                                console.log("AVALIACAO ENCONTRADA");
+                                compra.avaliacao = avaliacao;
+
+                                compra.avaliacao.edicao = false;
+                            });
+
 
                         this.produtoService.buscarProdutos(compra.codigoDoProduto)
                             .subscribe(produto => {

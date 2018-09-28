@@ -31,5 +31,21 @@ export class AvaliacaoService {
       .map(res => res.json());
      
   }
+
+  updateAvaliacao(avaliacao: Avaliacao): Observable<Avaliacao> {
+      debugger;
+     return this.http
+     .put(this.url + "/compra/" + avaliacao.idCompra, JSON.stringify(avaliacao), { headers: this.headers })
+     .map(res => res.json());
+  }
+ 
+
+  buscarAvaliacao(idCompra: string): Observable<Avaliacao> {
+    // debugger;
+       return this.http
+       .get(this.url + "/compra/" + idCompra, { headers: this.headers })
+       .map(res => res.json());
+      
+   }
     
 }
