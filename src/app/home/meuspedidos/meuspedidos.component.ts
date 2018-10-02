@@ -43,7 +43,7 @@ export class MeusPedidosComponent implements OnInit {
         avaliacao.edicao = true;
         console.log("SET EDICAO")
         console.log(avaliacao.edicao)
-        debugger
+      //  debugger
     }
 
     avaliar(titulo: string, descricao: string, box: string, pedido: Pedido, compra: Compra) {
@@ -66,7 +66,7 @@ export class MeusPedidosComponent implements OnInit {
 
         console.log("AVALIACAO");
         console.log(avaliacao);
-debugger
+    //debugger
         if (compra.avaliacao == null) {
             this.avaliacaoService.inserirAvaliacao(avaliacao)
                 .subscribe(avaliacao => {
@@ -81,7 +81,7 @@ debugger
             this.avaliacaoService.updateAvaliacao(avaliacao)
                 .subscribe(avaliacao => {
                     console.log("AVALIACAO ENVIADA UPDATE");
-                    debugger
+                    //debugger
                 });
 
         }

@@ -33,7 +33,7 @@ export class AvaliacaoService {
   }
 
   updateAvaliacao(avaliacao: Avaliacao): Observable<Avaliacao> {
-      debugger;
+      //debugger;
      return this.http
      .put(this.url + "/compra/" + avaliacao.idCompra, JSON.stringify(avaliacao), { headers: this.headers })
      .map(res => res.json());

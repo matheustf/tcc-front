@@ -11,6 +11,7 @@ export class Compra {
   public nomeDoProduto: string;
   public marca: string;
   public modelo: string;
+  public urlFornecedor: string;
 
   public check: boolean = true;
 

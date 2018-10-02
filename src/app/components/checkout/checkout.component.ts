@@ -130,13 +130,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         compra.modelo = item.product.modelo;
         compra.marca = item.product.marca;
 
-        debugger;
+       // debugger;
       this.fornecedorService.buscarFornecedor(compra.idFornecedor)
       .subscribe(fornecedor => {
         this.fornecedor = fornecedor;
           console.log(fornecedor);
-          compra.entrega.urlFornecedor=fornecedor.urlRetorno;
-          debugger;
+          compra.urlFornecedor=fornecedor.urlRetorno;
+        //  debugger;
         }, erro => console.log(erro));
 
         pedido.compras.push(compra);

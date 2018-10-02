@@ -17,4 +17,4 @@ COPY . .
 RUN ng build --env=prod 
 
 EXPOSE 4200
-CMD ["ng", "serve", "--env=prod", "-H", "0.0.0.0"] 
+CMD ["ng", "serve", "--env=prod", "--host", "0.0.0.0"] 
