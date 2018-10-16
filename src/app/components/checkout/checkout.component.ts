@@ -59,7 +59,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     private cepService: CepService,
     private fornecedorService: FornecedorService,
     private tokenService: TokenService,
-    private router : Router) {
+    private router: Router) {
   }
 
   public emptyCart(): void {
@@ -75,11 +75,11 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.deliveryOptions = [ 
-    {"id":"1" , "nome":"Cartão de Credito"},
-    {"id":"2" , "nome":"Paypal"},
-    {"id":"3" , "nome":"Boleto"}
-  ];
+    this.deliveryOptions = [
+      { "id": "1", "nome": "Cartão de Credito" },
+      { "id": "2", "nome": "Paypal" },
+      { "id": "3", "nome": "Boleto" }
+    ];
 
     this.cart = this.shoppingCartService.get();
     this.cartSubscription = this.cart.subscribe((cart) => {
@@ -99,10 +99,10 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     });
 
     this.enderecoService.buscarEndereco()
-    .subscribe(endereco => {
-     this.endereco = endereco;
-     this.endereco.pais = "Brasil";
-    }, erro => console.log(erro));
+      .subscribe(endereco => {
+        this.endereco = endereco;
+        this.endereco.pais = "Brasil";
+      }, erro => console.log(erro));
 
   }
 
@@ -130,67 +130,74 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         compra.modelo = item.product.modelo;
         compra.marca = item.product.marca;
 
-       // debugger;
-      this.fornecedorService.buscarFornecedor(compra.idFornecedor)
-      .subscribe(fornecedor => {
-        this.fornecedor = fornecedor;
-          console.log(fornecedor);
-          compra.urlFornecedor=fornecedor.urlRetorno;
-        //  debugger;
-        }, erro => console.log(erro));
+        // debugger;
+        this.fornecedorService.buscarFornecedor(compra.idFornecedor)
+          .subscribe(fornecedor => {
+            this.fornecedor = fornecedor;
+            console.log(fornecedor);
+            compra.urlFornecedor = fornecedor.urlDeRetorno;
+            //  debugger;
+          }, erro => console.log(erro));
 
         pedido.compras.push(compra);
       });
 
-    if (this.tokenService.hasToken()) {
 
-      const token = this.tokenService.getToken();
-      const user = jtw_decode(token) as User;
+    setTimeout(() => {
 
-      pedido.idCliente = user.idCadastro;
+      if (this.tokenService.hasToken()) {
 
-      pedido.endereco = this.endereco;
-      pedido.emailCliente = user.email;
-      pedido.nomeDoCliente = user.username;
+        const token = this.tokenService.getToken();
+        const user = jtw_decode(token) as User;
 
-      //MUDAR FORMA DE PAGAMENTO
-      pedido.formaDePagamento = "CREDITO";
+        pedido.idCliente = user.idCadastro;
 
-      console.log("CONSTRUIU");
-      console.log(pedido);
+        pedido.endereco = this.endereco;
+        pedido.emailCliente = user.email;
+        pedido.nomeDoCliente = user.nomeCadastro;
+        console.log("nome cadastro");
+        console.log(user.nomeCadastro);
 
-      this.pedidoService
-        .criarPedido(pedido)
-        .subscribe(pedidoCriado => {
-          //debugger;
+        //MUDAR FORMA DE PAGAMENTO
+        pedido.formaDePagamento = "CREDITO";
 
-          this.productsService
-          .efetuarOPedido(pedidoCriado.codigoDoPedido)
-          .subscribe(res => {
-            this.mensagem = res.mensagem;
+        console.log("CONSTRUIU");
+        console.log(pedido);
+
+        this.pedidoService
+          .criarPedido(pedido)
+          .subscribe(pedidoCriado => {
             //debugger;
-            this.router.navigate(['/confirmed']);
-            
+
+            this.productsService
+              .efetuarOPedido(pedidoCriado.codigoDoPedido)
+              .subscribe(res => {
+                this.mensagem = res.mensagem;
+                //debugger;
+                this.router.navigate(['/confirmed']);
+
+              }, erro => console.log(erro));
+
+
+
           }, erro => console.log(erro));
 
+      } else {
+        // MENSAGEM DE ERRO
+        alert("Faça o login no sistema ou realize o cadastro!!!");
+        this.router.navigate(['/home']);
+      }
 
-
-        }, erro => console.log(erro));
-        
-    } else {
-      // MENSAGEM DE ERRO
-      alert("Faça o login no sistema ou realize o cadastro!!!");
-      this.router.navigate(['/home']);
-    }
+    }, 1500)
   }
 
-  concluirPedido(concluirEndereco: boolean){
-    this.concluirEndereco=concluirEndereco;
+  concluirPedido(concluirEndereco: boolean) {
+    this.concluirEndereco = concluirEndereco;
   }
-  
+
   editarEndereco(endereco: Endereco) {
-    this.novoEndereco=endereco;
-    this.edicaoEndereco=true;
+    this.novoEndereco = endereco;
+    this.edicaoEndereco = true;
   }
 
   buscarCep(cep: string) {
@@ -198,8 +205,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     console.log(cep);
     this.cepService.buscarCep(cep)
       .subscribe(novoEndereco => {
-      this.novoEndereco = novoEndereco;
-      novoEndereco.pais="Brasil";
+        this.novoEndereco = novoEndereco;
+        novoEndereco.pais = "Brasil";
         console.log("ACHOU O ENDERECO");
         console.log(novoEndereco);
       }, erro => console.log(erro));
@@ -208,16 +215,16 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   save(novoEndereco: Endereco, isValid: boolean) {
     event.preventDefault();
-    novoEndereco.pais="Brasil";
+    novoEndereco.pais = "Brasil";
 
     console.log("SAVEE");
-      this.enderecoService.inserirEndereco(this.novoEndereco)
+    this.enderecoService.inserirEndereco(this.novoEndereco)
       .subscribe(res => {
         this.mensagem = res.mensagem;
       }, erro => console.log(erro));
 
-      this.endereco = novoEndereco;
-      this.edicaoEndereco=false;
+    this.endereco = novoEndereco;
+    this.edicaoEndereco = false;
   }
 
 }

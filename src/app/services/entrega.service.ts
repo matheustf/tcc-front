@@ -13,7 +13,7 @@ export class EntregaService {
   http: Http;
   headers: Headers;
 
-  url: string = environment.apiEntregasUrl + '/entregas/idCompra/';
+  url: string = environment.apiEntregasUrl + '/entregas/codigoDaCompra/';
 
   public constructor(http: Http) {
     this.http = http;

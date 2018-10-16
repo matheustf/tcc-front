@@ -12,6 +12,8 @@ export class SignInComponent implements OnInit {
     
     loginForm: FormGroup;
     @ViewChild('userNameInput') userNameInput: ElementRef;
+
+    alert: boolean = false;
     
     constructor(
         private formBuilder: FormBuilder,
@@ -26,7 +28,8 @@ export class SignInComponent implements OnInit {
             password: ['', Validators.required]
         });
         this.platformDetectorService.isPlatformBrowser() && 
-        this.userNameInput.nativeElement.focus();        
+        this.userNameInput.nativeElement.focus();    
+        this.alert = false;    
     } 
 
     login() {
@@ -43,14 +46,18 @@ export class SignInComponent implements OnInit {
         console.log(`User ${userName} authenticated with token ${authToken}`);
         //this.router.navigate(['user', userName]),
          this.router.navigate([''])
+          this.alert = false;
                 },
                 err => {
                     console.log(err);
                     this.loginForm.reset();
                     this.platformDetectorService.isPlatformBrowser() && 
                         this.userNameInput.nativeElement.focus();
-                    alert('Invalid user name or password');
+                    //alert('Invalid user name or password');
+                   this.alert = true;
                 }
             );
     }
+
+    
 }
